@@ -1,15 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { Styled, Description, Title, Details, Detail } from './styles'
 
-const Tile = () => {
+const Tile = ({ name, author, views }) => {
     return (
         <Styled>
             <Description>
-                <Title>Javascript for beginners</Title>
+                <Title>{name}</Title>
                 <Details>
-                    <Detail>Created by: Wojtek</Detail>
-                    <Detail>2137 views</Detail>
+                    <Detail>Created by: {author}</Detail>
+                    <Detail>{views} views</Detail>
                 </Details>
             </Description>
         </Styled>
@@ -17,3 +18,9 @@ const Tile = () => {
 }
 
 export default Tile
+
+Tile.propTypes = {
+    name: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    views: PropTypes.number.isRequired,
+}
