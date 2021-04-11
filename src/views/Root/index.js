@@ -8,8 +8,11 @@ import {
 // components
 import Landing from 'views/Landing'
 import Sidebar from 'components/organisms/Sidebar'
+import Recent from 'views/pages/Recent'
+import ForYou from 'views/pages/ForYou'
+import Popular from 'views/pages/Popular'
 
-// styles
+// srtyles
 import { GlobalStyle } from 'themes/GlobalStyle'
 import { Page } from './styles'
 
@@ -21,6 +24,9 @@ const App = () => {
                 <Sidebar />
                 <Switch>
                     <Route exact path='/' component={Landing} />
+                    <Route exact path='/foryou' component={ForYou} />
+                    <Route path='/recent' component={Recent} />
+                    <Route path='/popular' component={Popular} />
                     <Route path='/*'>
                         <h1>Jk</h1>
                     </Route>

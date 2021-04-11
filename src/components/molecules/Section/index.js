@@ -1,48 +1,39 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import Heading from 'components/atoms/Heading'
 import Tile from 'components/atoms/Tile'
+import MoreTile from 'components/atoms/Tile/MoreTile'
 
-import { Content, Tiles, Container } from './styles'
+import arrowForward from 'assets/navigation/arrow_forward.svg'
+import arrowBack from 'assets/navigation/arrow_back.svg'
 
-const Section = ({ header, apiCall }) => {
-    const [skip, setSkip] = useState(0)
-    const limit = 4
-    const [recentQuizes, setRecentQuizes] = useState([])
+import { Content, Tiles, Wrapper, ControlButton } from './styles'
+
+const Section = ({ header, apiCall, buttonPath }) => {
+    const [quizzes, setQuizzes] = useState([])
     const [carouselPage, setCarouselPage] = useState(0)
-    const [isMoreItems, setIsMoreItems] = useState(true)
 
     useEffect(() => {
-        apiCall(skip, limit).then(data => {
+        apiCall(0, 11).then(data => {
             if (data.length > 0) {
-                setSkip(skip + limit)
-                setRecentQuizes([data])
+                setQuizzes(data)
             }
         })
     }, [])
 
     const nextSlide = () => {
-        if (isMoreItems) {
+        if (carouselPage < 2) {
             setCarouselPage(carouselPage + 1)
-            if (carouselPage === recentQuizes.length - 1) {
-                apiCall(skip, limit).then(data => {
-                    if (data.length > 0) {
-                        setSkip(skip + limit)
-                        setRecentQuizes([...recentQuizes, data])
-                    }
-                    if (data.length < 4) {
-                        setIsMoreItems(false)
-                    }
-                })
-            }
         }
     }
 
     const prevSlide = () => {
-        if (carouselPage > 0) {
-            setIsMoreItems(true)
+        if (carouselPage < 1) {
+            setCarouselPage(0)
+        } else {
             setCarouselPage(carouselPage - 1)
         }
     }
@@ -50,31 +41,29 @@ const Section = ({ header, apiCall }) => {
     return (
         <Content>
             <Heading header={header} />
-            {console.log(recentQuizes)}
+            {carouselPage > 0 && (
+                <ControlButton onClick={prevSlide} left>
+                    <img src={arrowBack} alt='control_back' />
+                </ControlButton>
+            )}
             <Tiles>
-                {recentQuizes.length > 0 &&
-                    recentQuizes.map(item => (
-                        <Container
-                            key={item._id}
-                            carouselPage={carouselPage}
-                        >
-                            {item.map(quiz => (
-                                <Tile
-                                    key={quiz._id}
-                                    name={quiz.name}
-                                    author={quiz.author}
-                                    views={quiz.views}
-                                />
-                            ))}
-                        </Container>
+                <Wrapper carouselPage={carouselPage}>
+                    {quizzes.map(quiz => (
+                        <Tile
+                            key={quiz._id}
+                            name={quiz.name}
+                            author={quiz.author}
+                            views={quiz.views}
+                        />
                     ))}
+                    <MoreTile to={buttonPath} />
+                </Wrapper>
             </Tiles>
-            <button type='button' onClick={prevSlide}>
-                prevSlide
-            </button>
-            <button type='button' onClick={nextSlide}>
-                nextSlide
-            </button>
+            {carouselPage < 2 && (
+                <ControlButton onClick={nextSlide} right>
+                    <img src={arrowForward} alt='control_forward' />
+                </ControlButton>
+            )}
         </Content>
     )
 }
@@ -84,4 +73,5 @@ export default Section
 Section.propTypes = {
     header: PropTypes.string.isRequired,
     apiCall: PropTypes.func.isRequired,
+    buttonPath: PropTypes.string.isRequired,
 }

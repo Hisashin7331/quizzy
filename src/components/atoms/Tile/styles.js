@@ -1,13 +1,15 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Styled = styled.div`
-    width: 23%;
-    height: 98%;
-    margin: 1%;
-    background: red;
+    width: 95%;
+    height: 95%;
+    height: 95%;
     border-radius: 16px;
-    position: relative;
+    background: red;
     box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.07);
+    position: relative;
+    cursor: pointer;
 `
 
 const Description = styled.div`
@@ -42,4 +44,40 @@ const Detail = styled.h2`
     margin: 0 0 4px 0;
 `
 
-export { Styled, Description, Title, Details, Detail }
+const Text = styled.h1`
+    font-size: 32px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    position: absolute;
+    bottom: 8px;
+`
+
+const MoreButton = styled(Link)`
+    width: 95%;
+    height: 95%;
+    height: 95%;
+    border-radius: 16px;
+    background: none;
+    border: none;
+    box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.07),
+        inset 0 0 16px 1px rgb(0, 0, 0, 0.07);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        height: 35%;
+    }
+    cursor: pointer;
+    outline: none;
+`
+
+export {
+    Styled,
+    Description,
+    Title,
+    Details,
+    Detail,
+    Text,
+    MoreButton,
+}

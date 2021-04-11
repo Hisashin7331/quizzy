@@ -5,6 +5,7 @@ const Text = styled.h1`
     font-family: 'Roboto', sans-serif;
     margin: 16px;
     color: rgb(0, 0, 0, 0.6);
+    align-self: flex-start;
 `
 
 export { Text }

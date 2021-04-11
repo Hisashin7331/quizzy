@@ -11,7 +11,7 @@ const Bar = styled.nav`
     justify-content: flex-start;
     flex-direction: column;
     box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.3);
-    position: relative;
+    position: sticky;
     padding: 12px;
     box-sizing: border-box;
 `

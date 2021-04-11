@@ -2,7 +2,7 @@ import React from 'react'
 
 import Section from 'components/molecules/Section'
 
-import { getRecentQuizzes, getPopularQuizzes } from 'api/quizes'
+import { getRecentQuizzes, getPopularQuizzes } from 'api/quizzes'
 
 import { Content } from './styles'
 
@@ -13,10 +13,12 @@ const Landing = () => {
             <Section
                 header='Most recent'
                 apiCall={getRecentQuizzes}
+                buttonPath='/recent'
             />
             <Section
                 header='Most popular'
                 apiCall={getPopularQuizzes}
+                buttonPath='/popular'
             />
         </Content>
     )
