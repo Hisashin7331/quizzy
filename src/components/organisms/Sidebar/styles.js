@@ -3,24 +3,25 @@ import { NavLink } from 'react-router-dom'
 
 const Bar = styled.nav`
     width: 300px;
-    height: 95%;
-    border-radius: 16px;
+    height: 100%;
+    z-index: 9999999999;
     background: #121212;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
     box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.3);
-    position: sticky;
     padding: 12px;
     box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
 `
 
 const User = styled.div`
     width: 100%;
     height: 72px;
     background: #232529;
-    border-radius: 0 0 16px 16px;
     position: absolute;
     bottom: 0;
 `

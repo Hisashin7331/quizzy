@@ -1,11 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Styled, Description, Title, Details, Detail } from './styles'
+import {
+    Styled,
+    Description,
+    Title,
+    Details,
+    Detail,
+    Image,
+} from './styles'
 
 const Tile = ({ name, author, views }) => {
     return (
         <Styled>
+            <Image />
             <Description>
                 <Title>{name}</Title>
                 <Details>

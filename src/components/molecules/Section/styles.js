@@ -3,16 +3,14 @@ import styled, { css } from 'styled-components'
 
 const Content = styled.section`
     width: 100%;
-    height: 100%;
     box-sizing: border-box;
     padding: 16px;
-    border-radius: 16px;
     position: relative;
 `
 
 const Tiles = styled.span`
     width: 100%;
-    height: calc(100% - 32px);
+    height: auto;
     display: flex;
     overflow: hidden;
     position: relative;
@@ -25,9 +23,7 @@ const Wrapper = styled.div`
     transform: ${props =>
         props.carouselPage &&
         `translateX(-${props.carouselPage * 100}%)`};
-    grid-template-columns: repeat(12, 25%);
-    display: grid;
-    grid-template-rows: 100%;
+    display: flex;
     align-items: center;
     align-content: center;
     justify-items: center;

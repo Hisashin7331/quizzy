@@ -5,8 +5,9 @@ import Heading from 'components/atoms/Heading'
 import Tile from 'components/atoms/Tile'
 
 import { getPopularQuizzes } from 'api/quizzes'
+import { Content } from 'components/styles/Content'
 
-import { Content, Tiles, LoadMoreButton } from './styles'
+import { Tiles, LoadMoreButton } from './styles'
 
 const Popular = () => {
     const [quizzes, setQuizzes] = useState([])

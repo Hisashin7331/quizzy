@@ -4,7 +4,7 @@ import Section from 'components/molecules/Section'
 
 import { getRecentQuizzes, getPopularQuizzes } from 'api/quizzes'
 
-import { Content } from './styles'
+import { Content } from 'components/styles/Content'
 
 const Landing = () => {
     return (

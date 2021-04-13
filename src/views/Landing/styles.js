@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
 const Content = styled.div`
-    width: calc(90% - 128px);
-    height: 95%;
+    width: 70%;
+    height: 100%;
     border-radius: 16px;
     box-sizing: border-box;
     padding: 16px;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(auto-fit, 384px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 `
 
 export { Content }

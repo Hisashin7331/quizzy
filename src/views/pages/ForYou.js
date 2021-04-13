@@ -2,7 +2,8 @@ import React from 'react'
 
 import Heading from 'components/atoms/Heading'
 
-import { Content, Tiles } from './styles'
+import { Content } from 'components/styles/Content'
+import { Tiles } from './styles'
 
 const ForYou = () => {
     return (

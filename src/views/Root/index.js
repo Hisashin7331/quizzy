@@ -11,6 +11,7 @@ import Sidebar from 'components/organisms/Sidebar'
 import Recent from 'views/pages/Recent'
 import ForYou from 'views/pages/ForYou'
 import Popular from 'views/pages/Popular'
+import Creator from 'views/Creator'
 
 // srtyles
 import { GlobalStyle } from 'themes/GlobalStyle'
@@ -24,6 +25,7 @@ const App = () => {
                 <Sidebar />
                 <Switch>
                     <Route exact path='/' component={Landing} />
+                    <Route path='/create' component={Creator} />
                     <Route exact path='/foryou' component={ForYou} />
                     <Route path='/recent' component={Recent} />
                     <Route path='/popular' component={Popular} />

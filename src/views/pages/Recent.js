@@ -6,7 +6,8 @@ import Tile from 'components/atoms/Tile'
 
 import { getRecentQuizzes } from 'api/quizzes'
 
-import { Content, Tiles, LoadMoreButton } from './styles'
+import { Content } from 'components/styles/Content'
+import { Tiles, LoadMoreButton } from './styles'
 
 const Recent = () => {
     const [quizzes, setQuizzes] = useState([])

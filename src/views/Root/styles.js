@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 
 const Page = styled.div`
-    width: 1920px;
+    width: calc(100% - 300px);
+    position: absolute;
+    right: 0;
     height: 100vh;
+    margin: auto;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 `
 
 export { Page }

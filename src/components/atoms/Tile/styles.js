@@ -2,29 +2,26 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 const Styled = styled.div`
-    width: 95%;
-    height: 95%;
-    height: 95%;
-    border-radius: 16px;
-    background: red;
+    width: 24%;
+    margin: 0.5%;
     box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.07);
     position: relative;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
 `
 
 const Description = styled.div`
-    height: 35%;
     width: 100%;
-    position: absolute;
-    bottom: 0;
     box-sizing: border-box;
     padding: 12px;
     background: #ffffff;
-    border-radius: 0 0 14px 14px;
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 72px;
 `
 
 const Title = styled.h1`
@@ -53,10 +50,10 @@ const Text = styled.h1`
 `
 
 const MoreButton = styled(Link)`
-    width: 95%;
+    flex-shrink: 0;
+    width: 24%;
+    margin: 0.5%;
     height: 95%;
-    height: 95%;
-    border-radius: 16px;
     background: none;
     border: none;
     box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.07),
@@ -72,6 +69,12 @@ const MoreButton = styled(Link)`
     outline: none;
 `
 
+const Image = styled.img`
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: red;
+`
+
 export {
     Styled,
     Description,
@@ -80,4 +83,5 @@ export {
     Detail,
     Text,
     MoreButton,
+    Image,
 }
