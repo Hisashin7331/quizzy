@@ -6,7 +6,7 @@ const Text = styled.h1`
     margin: 16px;
     color: rgb(0, 0, 0, 0.6);
     align-self: flex-start;
-    color: white;
+    color: #000;
 `
 
 export { Text }

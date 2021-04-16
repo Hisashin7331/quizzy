@@ -8,8 +8,8 @@ import badge from 'assets/icons/badge.svg'
 import recent from 'assets/icons/recent.svg'
 
 import {
+    Wrapper,
     Bar,
-    User,
     Navigation,
     NavigationButton,
     NavigationButtonIcon,
@@ -30,12 +30,12 @@ const Sidebar = () => {
             icon: foryou,
         },
         {
-            name: 'Most recent',
+            name: 'Recent',
             to: '/recent',
             icon: recent,
         },
         {
-            name: 'Most popular',
+            name: 'Popular',
             to: '/popular',
             icon: badge,
         },
@@ -52,20 +52,26 @@ const Sidebar = () => {
     ]
     return (
         <Bar>
-            <Logo>Quizzy</Logo>
-            <Navigation>
-                {navElements.map(item => {
-                    return (
-                        <NavigationButton key={item.to} to={item.to}>
-                            <NavigationButtonIcon src={item.icon} />
-                            <NavigationButtonText>
-                                {item.name}
-                            </NavigationButtonText>
-                        </NavigationButton>
-                    )
-                })}
-            </Navigation>
-            <User />
+            <Wrapper>
+                <Logo to='/'>Quizzy</Logo>
+                <Navigation>
+                    {navElements.map(item => {
+                        return (
+                            <NavigationButton
+                                key={item.to}
+                                to={item.to}
+                            >
+                                <NavigationButtonIcon
+                                    src={item.icon}
+                                />
+                                <NavigationButtonText>
+                                    {item.name}
+                                </NavigationButtonText>
+                            </NavigationButton>
+                        )
+                    })}
+                </Navigation>
+            </Wrapper>
         </Bar>
     )
 }

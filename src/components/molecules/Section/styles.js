@@ -1,19 +1,19 @@
 /* eslint-disable no-use-before-define */
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const Content = styled.section`
     width: 100%;
     box-sizing: border-box;
     padding: 16px;
-    position: relative;
+    background: white;
 `
 
-const Tiles = styled.span`
-    width: 100%;
-    height: auto;
+const Tiles = styled.div`
+    width: 90%;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     overflow: hidden;
-    position: relative;
 `
 
 const Wrapper = styled.div`
@@ -31,32 +31,32 @@ const Wrapper = styled.div`
 `
 
 const ControlButton = styled.button`
-    width: 48px;
-    position: absolute;
-    top: 50%;
-    background: none;
-    border: none;
+    width: 5%;
+    height: inherit;
     z-index: 999;
+    border: none;
     &:focus {
         outline: none;
     }
     cursor: pointer;
+    background: none;
     display: flex;
     align-items: center;
     justify-content: center;
     img {
-        width: 100%;
+        width: 80%;
     }
-    ${props =>
-        props.right &&
-        css`
-            right: -24px;
-        `}
-    ${props =>
-        props.left &&
-        css`
-            left: -16px;
-        `}
 `
 
-export { Content, Tiles, Wrapper, ControlButton }
+const Slider = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    span {
+        width: 5%;
+        height: inherit;
+        opacity: 0;
+    }
+`
+
+export { Content, Tiles, Wrapper, ControlButton, Slider }

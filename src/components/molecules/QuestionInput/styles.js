@@ -2,21 +2,21 @@ import styled from 'styled-components'
 
 const Content = styled.div`
     width: 100%;
-    height: 256px;
+    height: 224px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-radius: 32px;
-    background: #232529;
+    background: white;
     padding: 32px;
     box-sizing: border-box;
-    box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.5);
+    box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.1);
+    margin-bottom: 16px;
 `
 
 const QuestionWrapper = styled.div`
-    border-radius: 16px;
     width: 100%;
-    height: 28%;
+    height: 48px;
+    margin: 0;
     border: 4px solid #121212;
     box-sizing: border-box;
     display: flex;
@@ -26,21 +26,20 @@ const QuestionWrapper = styled.div`
 const QuestionHeader = styled.span`
     height: 100%;
     width: 18%;
-    border-radius: 10px 0 0 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #121212;
-    font-size: 24px;
+    font-size: 16px;
     font-family: 'Roboto', sans-serif;
     color: white;
 `
 
 const Question = styled.input.attrs({
     type: 'text',
+    maxLength: 128,
 })`
     font-weight: bold;
-    border-radius: 0 12px 12px 0;
     width: 82%;
     height: 100%;
     outline: 0;
@@ -53,8 +52,8 @@ const Question = styled.input.attrs({
 
 const Answer = styled.input.attrs({
     type: 'text',
+    maxLength: 64,
 })`
-    border-radius: 12px 0 0 12px;
     outline: 0;
     box-sizing: border-box;
     height: 100%;
@@ -67,38 +66,39 @@ const Answer = styled.input.attrs({
 
 const AnswersWrapper = styled.div`
     width: 100%;
-    height: 60%;
+    height: 96px;
     display: grid;
     grid-template-columns: repeat(2, 49%);
-    grid-template-rows: repeat(2, 48%);
+    grid-template-rows: repeat(2, 48px);
     justify-content: space-between;
     align-content: space-between;
-    grid-gap: 1%;
+    grid-gap: 8px;
 `
 
 const Label = styled.div`
-    border-radius: 16px;
     width: 100%;
     height: 100%;
-    border: 4px solid #003b00;
+    border: 4px solid
+        ${({ isCorrect }) => (isCorrect ? '#28a745' : '#dc3545')};
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
+    transition: all 150ms;
 `
 
-const Checkbox = styled.input.attrs({
+const HiddenCheckbox = styled.input.attrs({
     type: 'checkbox',
 })`
+    display: none;
     outline: none;
 `
 
 const CheckboxLabel = styled.label`
-    border-radius: 0 10px 10px 0;
     aspect-ratio: 1 / 1;
     height: 100%;
-    background: #003b00;
+    background: #e9e9e9;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -109,6 +109,24 @@ const CheckboxLabel = styled.label`
         align-items: center;
         justify-content: center;
     }
+    position: relative;
+`
+
+const StyledCheckbox = styled.span`
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: ${({ isCorrect }) =>
+        isCorrect ? '#28a745' : '#dc3545'};
+    border-radius: 3px;
+    transition: all 150ms;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    img {
+        transition: 5s;
+        height: 70%;
+    }
 `
 
 export {
@@ -118,7 +136,8 @@ export {
     AnswersWrapper,
     Label,
     CheckboxLabel,
-    Checkbox,
+    HiddenCheckbox,
     QuestionWrapper,
     QuestionHeader,
+    StyledCheckbox,
 }

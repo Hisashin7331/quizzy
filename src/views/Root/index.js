@@ -12,6 +12,7 @@ import Recent from 'views/pages/Recent'
 import ForYou from 'views/pages/ForYou'
 import Popular from 'views/pages/Popular'
 import Creator from 'views/Creator'
+import ScrollToTop from 'components/atoms/ScrollToTop'
 
 // srtyles
 import { GlobalStyle } from 'themes/GlobalStyle'
@@ -20,6 +21,7 @@ import { Page } from './styles'
 const App = () => {
     return (
         <Router>
+            <ScrollToTop />
             <Page>
                 <GlobalStyle />
                 <Sidebar />

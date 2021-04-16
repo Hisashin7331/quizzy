@@ -2,7 +2,7 @@ import React from 'react'
 
 import QuizCreator from 'components/organisms/QuizCreator'
 
-import { Content } from 'components/styles/Content'
+import { Content } from './styles'
 
 const Creator = () => {
     return (

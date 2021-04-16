@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Content, NameInput, TagsInput } from './styles'
+import ThumbnailInput from 'components/molecules/ThumbnailInput'
+
+import { Content, NameInput, TagsInput, Top } from './styles'
 
 const Details = ({
     quizName,
@@ -9,23 +11,18 @@ const Details = ({
     quizTags,
     setQuizTags,
 }) => {
-    const [isFocused, setIsFocused] = useState(false)
     return (
         <Content>
-            <NameInput
-                value={quizName}
-                onChange={e => setQuizName(e.target.value)}
-            />
-            {isFocused && (
-                <h1 style={{ color: 'white' }}>
-                    Separate tags with comma
-                </h1>
-            )}
+            <Top>
+                <ThumbnailInput />
+                <NameInput
+                    value={quizName}
+                    onChange={e => setQuizName(e.target.value)}
+                />
+            </Top>
             <TagsInput
                 value={quizTags}
                 onChange={e => setQuizTags(e.target.value)}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
             />
         </Content>
     )

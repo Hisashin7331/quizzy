@@ -7,7 +7,7 @@ import { Tiles } from './styles'
 
 const ForYou = () => {
     return (
-        <Content>
+        <Content center>
             <Heading header='For you' />
             <Tiles>jk</Tiles>
         </Content>

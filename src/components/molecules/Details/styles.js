@@ -1,42 +1,57 @@
 import styled from 'styled-components'
 
 const Content = styled.div`
-    width: 65%;
+    width: 100%;
     height: 100%;
-    background: #232529;
-    border-radius: 16px;
     padding: 16px 32px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.1);
 `
 
-const NameInput = styled.input.attrs({
-    type: 'text',
+const NameInput = styled.textarea.attrs({
+    maxLength: '42',
+    placeholder: 'Your quiz name...',
 })`
+    resize: none;
     width: 100%;
-    height: 100px;
-    border: none;
+    height: 100%;
     background: none;
-    font-size: 64px;
+    border: none;
+    margin: 0 8px;
+    padding: 16px;
+    box-sizing: border-box;
+    font-size: 24px;
     outline: none;
-    color: white;
+    color: black;
     font-family: 'Roboto', sans-serif;
+    overflow: hidden;
 `
 
 const TagsInput = styled.input.attrs({
     type: 'text',
+    placeholder: 'Tags separated with comma',
 })`
     outline: none;
     width: 100%;
-    height: 48px;
+    height: 40px;
     border: none;
     background: none;
-    font-size: 32px;
+    font-size: 20px;
     outline: none;
-    color: white;
     font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    padding: 16px;
+    color: black;
+    background: #e9e9e9;
 `
 
-export { Content, NameInput, TagsInput }
+const Top = styled.div`
+    height: 60%;
+    width: 100%;
+    display: flex;
+`
+
+export { Top, Content, NameInput, TagsInput }

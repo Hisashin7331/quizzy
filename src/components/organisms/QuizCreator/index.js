@@ -1,18 +1,18 @@
 /* eslint-disable no-plusplus */
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-import ThumbnailInput from 'components/molecules/ThumbnailInput'
 import Details from 'components/molecules/Details'
 import QuestionInput from 'components/molecules/QuestionInput'
 
 import { Content } from 'components/styles/Content'
-import { Section, MoreButton, Wrapper } from './styles'
+import { Section, ActionButton, Wrapper, Column } from './styles'
 
 const QuizCreator = () => {
     const [questionsNumber, setQuestionsNumber] = useState(3)
-    const [quizName, setQuizName] = useState('Your quiz name...')
+    const [quizName, setQuizName] = useState('')
     const [quizData, setQuizData] = useState([])
-    const [quizTags, setQuizTags] = useState('your, quiz, tags')
+    const [quizTags, setQuizTags] = useState('')
 
     const renderSections = () => {
         const sections = []
@@ -31,24 +31,37 @@ const QuizCreator = () => {
 
     return (
         <Content center>
-            <Section>
-                <ThumbnailInput />
-                <Details
-                    quizName={quizName}
-                    setQuizName={setQuizName}
-                    quizTags={quizTags}
-                    setQuizTags={setQuizTags}
-                />
-            </Section>
             <Wrapper>
-                {renderSections().map(item => item)}
-                <MoreButton
-                    onClick={() =>
-                        setQuestionsNumber(questionsNumber + 1)
-                    }
-                >
-                    +
-                </MoreButton>
+                <Column wide>
+                    <Section>
+                        <Details
+                            quizName={quizName}
+                            setQuizName={setQuizName}
+                            quizTags={quizTags}
+                            setQuizTags={setQuizTags}
+                        />
+                    </Section>
+                    {renderSections().map(item => item)}
+                </Column>
+                <Column>
+                    <ActionButton action='tutorial'>
+                        Run tutorial
+                    </ActionButton>
+                    <ActionButton action='cancel' as={Link} to='/'>
+                        Cancel
+                    </ActionButton>
+                    <ActionButton
+                        action='more'
+                        onClick={() =>
+                            setQuestionsNumber(questionsNumber + 1)
+                        }
+                    >
+                        New Question
+                    </ActionButton>
+                    <ActionButton action='submit'>
+                        Submit
+                    </ActionButton>
+                </Column>
             </Wrapper>
         </Content>
     )

@@ -3,12 +3,11 @@ import styled from 'styled-components'
 const Thumbnail = styled.div`
     height: 100%;
     aspect-ratio: 16 / 9;
-    background: #232529;
+    background: lightgrey;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 16px;
 `
 
 const Preview = styled.img`
@@ -20,7 +19,6 @@ const Preview = styled.img`
     object-fit: contain;
     object-position: center;
     z-index: 1;
-    border-radius: 16px;
 `
 
 const FileInput = styled.input.attrs({

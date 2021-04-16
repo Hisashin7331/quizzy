@@ -2,14 +2,13 @@ import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
 const Bar = styled.nav`
-    width: 300px;
-    height: 100%;
+    width: 100vw;
+    height: 64px;
     z-index: 9999999999;
     background: #121212;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
+    justify-content: center;
     box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.3);
     padding: 12px;
     box-sizing: border-box;
@@ -27,27 +26,22 @@ const User = styled.div`
 `
 
 const Navigation = styled.div`
-    margin-top: 24px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(auto-fit, 48px);
+    display: flex;
     grid-gap: 8px;
     color: white;
+    align-items: center;
+    gap: 16px;
 `
 
 const NavigationButton = styled(NavLink)`
-    height: 100%;
-    width: 100%;
+    height: 96px;
     padding: 12px;
     box-sizing: border-box;
     text-decoration: none;
     display: flex;
     align-items: center;
-    border-radius: 12px;
     color: #9f9f9f;
     &.active {
-        background: #232323;
         color: white;
     }
 `
@@ -63,14 +57,23 @@ const NavigationButtonText = styled.h1`
     font-size: 20px;
 `
 
-const Logo = styled.h1`
+const Logo = styled(NavLink)`
     font-family: 'Dela Gothic One', sans-serif;
-    font-size: 48px;
+    font-size: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     margin: 0;
+    text-decoration: none;
+`
+
+const Wrapper = styled.div`
+    height: 100%;
+    width: 1440px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `
 
 export {
@@ -81,4 +84,5 @@ export {
     NavigationButtonIcon,
     NavigationButtonText,
     Logo,
+    Wrapper,
 }

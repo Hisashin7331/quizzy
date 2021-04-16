@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         display: flex;
         justify-content: center;
+        background: #e9e9e9;
     }
     body > #root {
         width: 100%;

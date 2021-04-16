@@ -3,6 +3,9 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
+import correct from 'assets/symbolic/correct.svg'
+import incorrect from 'assets/symbolic/incorrect.svg'
+
 import {
     Content,
     Question,
@@ -12,7 +15,8 @@ import {
     CheckboxLabel,
     QuestionWrapper,
     QuestionHeader,
-    Checkbox,
+    HiddenCheckbox,
+    StyledCheckbox,
 } from './styles'
 
 const QuestionInput = ({ quizData, setQuizData, questionNumber }) => {
@@ -77,27 +81,43 @@ const QuestionInput = ({ quizData, setQuizData, questionNumber }) => {
             </QuestionWrapper>
             <AnswersWrapper>
                 {questionData.answers.map((item, index) => (
-                    <Label key={index}>
+                    <Label
+                        key={index}
+                        isCorrect={
+                            questionData.answers[index].isCorrect
+                        }
+                    >
                         <Answer
                             value={questionData.answers[index].answer}
                             onChange={e =>
                                 setAnswer(e.target.value, index)
                             }
                         />
-                        <CheckboxLabel
-                            onClick={() => setIsCorrect(index)}
-                            isChecked={
-                                questionData.answers[index].isCorrect
-                            }
-                        >
-                            <Checkbox
+                        <CheckboxLabel>
+                            <HiddenCheckbox
                                 type='checkbox'
                                 checked={
                                     questionData.answers[index]
                                         .isCorrect
                                 }
                             />
-                            <span />
+                            <StyledCheckbox
+                                onClick={() => setIsCorrect(index)}
+                                isCorrect={
+                                    questionData.answers[index]
+                                        .isCorrect
+                                }
+                            >
+                                <img
+                                    src={
+                                        questionData.answers[index]
+                                            .isCorrect
+                                            ? correct
+                                            : incorrect
+                                    }
+                                    alt='Correctness of the answer'
+                                />
+                            </StyledCheckbox>
                         </CheckboxLabel>
                     </Label>
                 ))}

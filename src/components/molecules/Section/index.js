@@ -10,7 +10,13 @@ import MoreTile from 'components/atoms/Tile/MoreTile'
 import arrowForward from 'assets/navigation/arrow_forward.svg'
 import arrowBack from 'assets/navigation/arrow_back.svg'
 
-import { Content, Tiles, Wrapper, ControlButton } from './styles'
+import {
+    Content,
+    Tiles,
+    Wrapper,
+    ControlButton,
+    Slider,
+} from './styles'
 
 const Section = ({ header, apiCall, buttonPath }) => {
     const [quizzes, setQuizzes] = useState([])
@@ -41,29 +47,38 @@ const Section = ({ header, apiCall, buttonPath }) => {
     return (
         <Content>
             <Heading header={header} />
-            {carouselPage > 0 && (
-                <ControlButton onClick={prevSlide} left>
-                    <img src={arrowBack} alt='control_back' />
-                </ControlButton>
-            )}
-            <Tiles>
-                <Wrapper carouselPage={carouselPage}>
-                    {quizzes.map(quiz => (
-                        <Tile
-                            key={quiz._id}
-                            name={quiz.name}
-                            author={quiz.author}
-                            views={quiz.views}
+            <Slider>
+                {carouselPage > 0 ? (
+                    <ControlButton onClick={prevSlide}>
+                        <img src={arrowBack} alt='control_back' />
+                    </ControlButton>
+                ) : (
+                    <span />
+                )}
+                <Tiles>
+                    <Wrapper carouselPage={carouselPage}>
+                        {quizzes.map(quiz => (
+                            <Tile
+                                key={quiz._id}
+                                name={quiz.name}
+                                author={quiz.author}
+                                views={quiz.views}
+                            />
+                        ))}
+                        <MoreTile to={buttonPath} />
+                    </Wrapper>
+                </Tiles>
+                {carouselPage < 2 ? (
+                    <ControlButton onClick={nextSlide}>
+                        <img
+                            src={arrowForward}
+                            alt='control_forward'
                         />
-                    ))}
-                    <MoreTile to={buttonPath} />
-                </Wrapper>
-            </Tiles>
-            {carouselPage < 2 && (
-                <ControlButton onClick={nextSlide} right>
-                    <img src={arrowForward} alt='control_forward' />
-                </ControlButton>
-            )}
+                    </ControlButton>
+                ) : (
+                    <span />
+                )}
+            </Slider>
         </Content>
     )
 }
