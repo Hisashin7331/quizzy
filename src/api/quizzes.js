@@ -3,7 +3,7 @@ import { config } from 'config'
 
 export const getRecentQuizzes = async (skip = 0, limit = 4) => {
     const apiResult = await axios.get(
-        `${config.apiURL}/quizes/recentQuizzes`,
+        `${config.apiURL}/quizzes/recentQuizzes`,
         {
             params: {
                 skip,
@@ -16,7 +16,7 @@ export const getRecentQuizzes = async (skip = 0, limit = 4) => {
 
 export const getPopularQuizzes = async (skip = 0, limit = 4) => {
     const apiResult = await axios.get(
-        `${config.apiURL}/quizes/popularQuizzes`,
+        `${config.apiURL}/quizzes/popularQuizzes`,
         {
             params: {
                 skip,
@@ -25,4 +25,13 @@ export const getPopularQuizzes = async (skip = 0, limit = 4) => {
         },
     )
     return apiResult.data
+}
+
+export const createQuiz = quiz => {
+    axios
+        .post(`${config.apiURL}/quizzes/createQuiz`, {
+            author: 'jk',
+            ...quiz,
+        })
+        .then(({ data }) => console.log(data))
 }

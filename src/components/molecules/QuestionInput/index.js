@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-plusplus */
 import React, { useState, useEffect } from 'react'
@@ -100,9 +101,9 @@ const QuestionInput = ({ quizData, setQuizData, questionNumber }) => {
                                     questionData.answers[index]
                                         .isCorrect
                                 }
+                                onChange={() => setIsCorrect(index)}
                             />
                             <StyledCheckbox
-                                onClick={() => setIsCorrect(index)}
                                 isCorrect={
                                     questionData.answers[index]
                                         .isCorrect
@@ -129,7 +130,7 @@ const QuestionInput = ({ quizData, setQuizData, questionNumber }) => {
 export default QuestionInput
 
 QuestionInput.propTypes = {
-    quizData: PropTypes.arrayOf.isRequired,
+    quizData: PropTypes.array.isRequired,
     setQuizData: PropTypes.func.isRequired,
     questionNumber: PropTypes.number.isRequired,
 }

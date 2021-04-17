@@ -12,7 +12,7 @@ const Section = styled.section`
     box-sizing: border-box;
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
     width: 1080px;
     box-sizing: border-box;
     padding: 0 32px;

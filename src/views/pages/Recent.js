@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react'
+import { seo } from 'functions/seo'
 
 import Heading from 'components/atoms/Heading'
 import Tile from 'components/atoms/Tile'
@@ -23,12 +24,18 @@ const Recent = () => {
                 setSkip(skip + limit)
             }
         })
+        seo({
+            title: 'Recent quizzes |',
+            description:
+                'Browse quizzes that are created recently by users. Take a part in our fun and create your own quiz!',
+        })
     }, [])
 
     const loadMore = () => {
         setIsFetching(true)
         getRecentQuizzes(skip, limit).then(data => {
             setIsFetching(false)
+            setSkip(skip + limit)
             if (data.length > 0) {
                 setQuizzes([...quizzes, ...data])
             }

@@ -53,13 +53,14 @@ const Section = ({ header, apiCall, buttonPath }) => {
                         <img src={arrowBack} alt='control_back' />
                     </ControlButton>
                 ) : (
-                    <span />
+                    <span className='span-empty' />
                 )}
                 <Tiles>
                     <Wrapper carouselPage={carouselPage}>
                         {quizzes.map(quiz => (
                             <Tile
                                 key={quiz._id}
+                                id={quiz._id}
                                 name={quiz.name}
                                 author={quiz.author}
                                 views={quiz.views}
@@ -76,7 +77,7 @@ const Section = ({ header, apiCall, buttonPath }) => {
                         />
                     </ControlButton>
                 ) : (
-                    <span />
+                    <span className='span-empty' />
                 )}
             </Slider>
         </Content>

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 
 import Heading from 'components/atoms/Heading'
 import Tile from 'components/atoms/Tile'
+import { seo } from 'functions/seo'
 
 import { getPopularQuizzes } from 'api/quizzes'
 import { Content } from 'components/styles/Content'
@@ -23,12 +24,18 @@ const Popular = () => {
                 setSkip(skip + limit)
             }
         })
+        seo({
+            title: 'Popular quizzes |',
+            description:
+                'Browse the most viewed quizzes on Quizzy. Create your own and see if you can be the best!',
+        })
     }, [])
 
     const loadMore = () => {
         setIsFetching(true)
         getPopularQuizzes(skip, limit).then(data => {
             setIsFetching(false)
+            setSkip(skip + limit)
             if (data.length > 0) {
                 setQuizzes([...quizzes, ...data])
             }

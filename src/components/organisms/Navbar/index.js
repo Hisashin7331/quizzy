@@ -17,7 +17,7 @@ import {
     Logo,
 } from './styles'
 
-const Sidebar = () => {
+const Navbar = () => {
     const navElements = [
         {
             name: 'Browse',
@@ -76,4 +76,4 @@ const Sidebar = () => {
     )
 }
 
-export default Sidebar
+export default Navbar

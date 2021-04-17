@@ -1,6 +1,7 @@
-/* eslint-disable no-plusplus */
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { quizValidation } from 'functions/quizValidation'
+import { createQuiz } from 'api/quizzes'
 
 import Details from 'components/molecules/Details'
 import QuestionInput from 'components/molecules/QuestionInput'
@@ -13,10 +14,11 @@ const QuizCreator = () => {
     const [quizName, setQuizName] = useState('')
     const [quizData, setQuizData] = useState([])
     const [quizTags, setQuizTags] = useState('')
+    const [errors, setErrors] = useState([])
 
     const renderSections = () => {
         const sections = []
-        for (let i = 0; i < questionsNumber; i++) {
+        for (let i = 0; i < questionsNumber; i += 1) {
             sections.push(
                 <QuestionInput
                     key={i}
@@ -27,6 +29,18 @@ const QuizCreator = () => {
             )
         }
         return sections
+    }
+
+    const submitQuiz = () => {
+        const errorsFound = quizValidation(
+            quizName,
+            quizData,
+            quizTags,
+            setErrors,
+        )
+        if (errorsFound.length > 0) return
+        const data = { name: quizName, data: quizData }
+        createQuiz(data)
     }
 
     return (
@@ -58,9 +72,15 @@ const QuizCreator = () => {
                     >
                         New Question
                     </ActionButton>
-                    <ActionButton action='submit'>
+                    <ActionButton
+                        action='submit'
+                        onClick={submitQuiz}
+                    >
                         Submit
                     </ActionButton>
+                    {errors.map(item => (
+                        <ActionButton key={item}>{item}</ActionButton>
+                    ))}
                 </Column>
             </Wrapper>
         </Content>

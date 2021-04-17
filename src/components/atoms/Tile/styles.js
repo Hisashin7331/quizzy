@@ -1,15 +1,17 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-const Styled = styled.div`
+const Styled = styled(Link)`
+    text-decoration: none;
     width: 24%;
     margin: 0.5%;
-    box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.07);
     position: relative;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
+    color: black;
+    box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.1);
 `
 
 const Description = styled.div`
@@ -21,7 +23,6 @@ const Description = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 72px;
 `
 
 const Title = styled.h1`
@@ -39,6 +40,7 @@ const Details = styled.span`
 const Detail = styled.h2`
     font-size: 12px;
     margin: 0 0 4px 0;
+    color: black;
 `
 
 const Text = styled.h1`

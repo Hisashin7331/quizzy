@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 const Content = styled.div`
     width: 1440px;
-    min-height: 100%;
     box-sizing: border-box;
     margin-top: 64px;
     padding: 8px;

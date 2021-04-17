@@ -15,20 +15,20 @@ const Tiles = styled.div`
 
 const LoadMoreButton = styled.button`
     width: 256px;
-    height: 64px;
-    position: absolute;
+    height: 48px;
+    position: fixed;
+    background: rgb(36, 160, 237);
     bottom: 0;
-    border-radius: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 32px 32px 0 0;
     border: none;
-    background: none;
     box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-shadow: inset 0 0 16px 1px rgb(0, 0, 0, 0.2);
     outline: none;
     cursor: pointer;
     * {
-        font-size: 24px;
+        font-size: 20px;
         font-family: 'Roboto', sans-serif;
     }
 `

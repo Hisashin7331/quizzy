@@ -6,6 +6,8 @@ const Content = styled.section`
     box-sizing: border-box;
     padding: 16px;
     background: white;
+    margin-top: 16px;
+    box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.1);
 `
 
 const Tiles = styled.div`
@@ -52,7 +54,7 @@ const Slider = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-around;
-    span {
+    .span-empty {
         width: 5%;
         height: inherit;
         opacity: 0;

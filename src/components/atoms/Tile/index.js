@@ -10,9 +10,9 @@ import {
     Image,
 } from './styles'
 
-const Tile = ({ name, author, views }) => {
+const Tile = ({ name, author, views, id }) => {
     return (
-        <Styled>
+        <Styled to={`/quiz/${id}`}>
             <Image />
             <Description>
                 <Title>{name}</Title>
@@ -28,6 +28,7 @@ const Tile = ({ name, author, views }) => {
 export default Tile
 
 Tile.propTypes = {
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     views: PropTypes.number.isRequired,

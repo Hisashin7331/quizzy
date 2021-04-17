@@ -7,7 +7,7 @@ import {
 
 // components
 import Landing from 'views/Landing'
-import Sidebar from 'components/organisms/Sidebar'
+import Navbar from 'components/organisms/Navbar'
 import Recent from 'views/pages/Recent'
 import ForYou from 'views/pages/ForYou'
 import Popular from 'views/pages/Popular'
@@ -24,13 +24,14 @@ const App = () => {
             <ScrollToTop />
             <Page>
                 <GlobalStyle />
-                <Sidebar />
+                <Navbar />
                 <Switch>
                     <Route exact path='/' component={Landing} />
                     <Route path='/create' component={Creator} />
                     <Route exact path='/foryou' component={ForYou} />
                     <Route path='/recent' component={Recent} />
                     <Route path='/popular' component={Popular} />
+                    <Route path='/quiz/:id' />
                     <Route path='/*'>
                         <h1>Jk</h1>
                     </Route>
