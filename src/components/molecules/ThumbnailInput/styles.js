@@ -8,6 +8,10 @@ const Thumbnail = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    &:hover label {
+        opacity: 0.6;
+    }
+    cursor: pointer;
 `
 
 const Preview = styled.img`
@@ -23,6 +27,8 @@ const Preview = styled.img`
 
 const FileInput = styled.input.attrs({
     type: 'file',
+    name: 'file',
+    enctype: 'multipart/form-data',
 })`
     display: none;
 `
@@ -32,12 +38,10 @@ const FileLabel = styled.label`
     width: 64px;
     border-radius: 50%;
     opacity: 0;
-    cursor: pointer;
+
     background: lightgrey;
     transition: 0.3s;
-    &:hover {
-        opacity: 0.6;
-    }
+
     z-index: 2;
     display: flex;
     align-items: center;
@@ -47,4 +51,15 @@ const FileLabel = styled.label`
     }
 `
 
-export { Thumbnail, FileInput, FileLabel, Preview }
+const Placeholder = styled.h3`
+    font-size: 32px;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 50%;
+    top: 50%;
+    opacity: 0.2;
+    transform: translate(-50%, -50%);
+`
+
+export { Thumbnail, FileInput, FileLabel, Preview, Placeholder }

@@ -17,6 +17,7 @@ const Wrapper = styled.form`
     box-sizing: border-box;
     padding: 0 32px;
     display: flex;
+    position: relative;
 `
 
 const Column = styled.div`
@@ -33,6 +34,13 @@ const Column = styled.div`
     padding: 16px;
     box-sizing: border-box;
     flex-shrink: 0;
+    ${props =>
+        props.errors &&
+        css`
+            position: absolute;
+            top: 0;
+            transform: translateX(-110%);
+        `}
 `
 
 const ActionButton = styled.button.attrs({

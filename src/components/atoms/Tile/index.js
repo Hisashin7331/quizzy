@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { config } from 'config'
 
 import {
     Styled,
@@ -10,10 +11,15 @@ import {
     Image,
 } from './styles'
 
-const Tile = ({ name, author, views, id }) => {
+const Tile = ({ thumbnail, name, author, views, id }) => {
     return (
         <Styled to={`/quiz/${id}`}>
-            <Image />
+            <Image
+                src={
+                    thumbnail &&
+                    `${config.apiURL}/images/thumbnail?thumbnail=${thumbnail}`
+                }
+            />
             <Description>
                 <Title>{name}</Title>
                 <Details>
@@ -28,8 +34,13 @@ const Tile = ({ name, author, views, id }) => {
 export default Tile
 
 Tile.propTypes = {
+    thumbnail: PropTypes.arrayOf(String),
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     views: PropTypes.number.isRequired,
+}
+
+Tile.defaultProps = {
+    thumbnail: null,
 }

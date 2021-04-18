@@ -10,11 +10,12 @@ const Details = ({
     setQuizName,
     quizTags,
     setQuizTags,
+    setThumbnail,
 }) => {
     return (
         <Content>
             <Top>
-                <ThumbnailInput />
+                <ThumbnailInput setThumbnail={setThumbnail} />
                 <NameInput
                     value={quizName}
                     onChange={e => setQuizName(e.target.value)}
@@ -35,4 +36,5 @@ Details.propTypes = {
     setQuizName: PropTypes.func.isRequired,
     quizTags: PropTypes.string.isRequired,
     setQuizTags: PropTypes.func.isRequired,
+    setThumbnail: PropTypes.func.isRequired,
 }

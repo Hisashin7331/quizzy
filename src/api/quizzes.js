@@ -27,11 +27,16 @@ export const getPopularQuizzes = async (skip = 0, limit = 4) => {
     return apiResult.data
 }
 
-export const createQuiz = quiz => {
+export const createQuiz = (quiz, thumbnail) => {
     axios
-        .post(`${config.apiURL}/quizzes/createQuiz`, {
-            author: 'jk',
-            ...quiz,
+        .post(`${config.apiURL}/images/upload`, thumbnail)
+        .then(({ data }) => {
+            axios
+                .post(`${config.apiURL}/quizzes/createQuiz`, {
+                    author: 'jk',
+                    thumbnail: data,
+                    ...quiz,
+                })
+                .then(response => console.log(response))
         })
-        .then(({ data }) => console.log(data))
 }

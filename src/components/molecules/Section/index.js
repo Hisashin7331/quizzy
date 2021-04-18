@@ -64,6 +64,7 @@ const Section = ({ header, apiCall, buttonPath }) => {
                                 name={quiz.name}
                                 author={quiz.author}
                                 views={quiz.views}
+                                thumbnail={quiz.thumbnail}
                             />
                         ))}
                         <MoreTile to={buttonPath} />

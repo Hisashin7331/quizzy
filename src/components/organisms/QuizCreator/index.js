@@ -5,6 +5,7 @@ import { createQuiz } from 'api/quizzes'
 
 import Details from 'components/molecules/Details'
 import QuestionInput from 'components/molecules/QuestionInput'
+import Error from 'components/atoms/Error'
 
 import { Content } from 'components/styles/Content'
 import { Section, ActionButton, Wrapper, Column } from './styles'
@@ -14,6 +15,7 @@ const QuizCreator = () => {
     const [quizName, setQuizName] = useState('')
     const [quizData, setQuizData] = useState([])
     const [quizTags, setQuizTags] = useState('')
+    const [thumbnail, setThumbnail] = useState()
     const [errors, setErrors] = useState([])
 
     const renderSections = () => {
@@ -40,15 +42,23 @@ const QuizCreator = () => {
         )
         if (errorsFound.length > 0) return
         const data = { name: quizName, data: quizData }
-        createQuiz(data)
+        const file = new FormData()
+        file.append('file', thumbnail)
+        createQuiz(data, file)
     }
 
     return (
         <Content center>
             <Wrapper>
+                <Column errors>
+                    {errors.map(item => (
+                        <Error key={item} message={item} />
+                    ))}
+                </Column>
                 <Column wide>
                     <Section>
                         <Details
+                            setThumbnail={setThumbnail}
                             quizName={quizName}
                             setQuizName={setQuizName}
                             quizTags={quizTags}
@@ -78,9 +88,6 @@ const QuizCreator = () => {
                     >
                         Submit
                     </ActionButton>
-                    {errors.map(item => (
-                        <ActionButton key={item}>{item}</ActionButton>
-                    ))}
                 </Column>
             </Wrapper>
         </Content>

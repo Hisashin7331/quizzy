@@ -7,9 +7,12 @@ export const GlobalStyle = createGlobalStyle`
         display: flex;
         justify-content: center;
         background: #e9e9e9;
-        overflow-y: scroll;
+
     }
     body > #root {
         width: 100%;
+    }
+    html {
+        overflow-y: scroll;
     }
 `

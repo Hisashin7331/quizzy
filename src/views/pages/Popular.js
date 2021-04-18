@@ -47,6 +47,7 @@ const Popular = () => {
             <Tiles>
                 {quizzes.map(item => (
                     <Tile
+                        thumbnail={item.thumbnail}
                         key={item._id}
                         name={item.name}
                         author={item.author}
