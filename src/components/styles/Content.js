@@ -5,12 +5,14 @@ const Content = styled.div`
     box-sizing: border-box;
     margin-top: 64px;
     padding: 8px;
+    height: 100%;
     display: flex;
     gap: 8px;
     flex-direction: column;
-    align-items: ${({ center }) =>
-        center ? 'center' : 'flex-start'};
-    justify-content: flex-start;
+    align-items: ${({ justifyCenter }) =>
+        justifyCenter ? 'center' : 'flex-start'};
+    justify-content: ${({ alignCenter }) =>
+        alignCenter ? 'center' : 'flex-start'};
     font-family: 'Roboto', sans-serif;
 `
 

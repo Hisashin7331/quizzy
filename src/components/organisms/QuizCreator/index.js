@@ -48,7 +48,7 @@ const QuizCreator = () => {
     }
 
     return (
-        <Content center>
+        <Content justifyCenter>
             <Wrapper>
                 <Column errors>
                     {errors.map(item => (

@@ -55,7 +55,6 @@ const MoreButton = styled(Link)`
     flex-shrink: 0;
     width: 24%;
     margin: 0.5%;
-    height: 95%;
     background: none;
     border: none;
     box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.07),
@@ -69,6 +68,7 @@ const MoreButton = styled(Link)`
     }
     cursor: pointer;
     outline: none;
+    height: 100%;
 `
 
 const Image = styled.img`

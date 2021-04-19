@@ -13,6 +13,7 @@ const Content = styled.section`
 const Tiles = styled.div`
     width: 90%;
     display: flex;
+    height: 236px;
     justify-content: space-between;
     align-items: center;
     overflow: hidden;

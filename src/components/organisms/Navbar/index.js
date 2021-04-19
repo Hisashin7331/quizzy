@@ -49,6 +49,11 @@ const Navbar = () => {
             to: '/support',
             icon: support,
         },
+        {
+            name: 'Login',
+            to: '/login',
+            icon: support,
+        },
     ]
     return (
         <Bar>
