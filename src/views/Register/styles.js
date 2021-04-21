@@ -79,8 +79,7 @@ const Button = styled.button`
     box-sizing: border-box;
     border-radius: 64px;
     border: none;
-    background: #007bff;
-    flex-flow: row wrap;
+    background: ${props => (props.prev ? '#17a2b8' : '#007bff')};
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
     transition: 0.5s;
@@ -105,7 +104,7 @@ const Categories = styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 32px;
+    margin-bottom: 64px;
 `
 
 const Category = styled.label`
@@ -114,7 +113,7 @@ const Category = styled.label`
     margin: 4px;
 
     input:checked + span {
-        background: red;
+        background: #28a745;
     }
 
     cursor: pointer;
@@ -130,13 +129,14 @@ const Radio = styled.input.attrs({
 const Label = styled.span`
     border-radius: 64px;
     height: 100%;
-    padding: 0 12px;
+    padding: 0 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Roboto', sans-serif;
     background: lightgrey;
     box-sizing: border-box;
+    font-weight: 700;
 `
 
 export {

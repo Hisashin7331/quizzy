@@ -128,7 +128,11 @@ const Details = () => {
             />
             <Wrapper>
                 <div style={{ width: '50%' }}>
-                    <Button type='button' onClick={() => setIndex(0)}>
+                    <Button
+                        prev
+                        type='button'
+                        onClick={() => setIndex(0)}
+                    >
                         Previous
                     </Button>
                 </div>
@@ -165,13 +169,15 @@ const Preferences = () => {
             newCategories.push(item)
         }
         setCategories(newCategories)
-        console.log(categories)
     }
 
     return (
         <>
             <Heading>Preferences</Heading>
-            <h6 style={{ marginTop: 0 }}>Choose at least one</h6>
+
+            <h6 style={{ marginTop: 0 }}>
+                Choose at least one category
+            </h6>
             <Categories>
                 {categoriesList.map(item => (
                     <Category
@@ -185,7 +191,11 @@ const Preferences = () => {
             </Categories>
             <Wrapper>
                 <div style={{ width: '50%' }}>
-                    <Button type='button' onClick={() => setIndex(1)}>
+                    <Button
+                        prev
+                        type='button'
+                        onClick={() => setIndex(1)}
+                    >
                         Previous
                     </Button>
                 </div>
