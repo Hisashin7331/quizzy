@@ -21,57 +21,6 @@ const Heading = styled.h1`
     margin: 16px 0 48px 0;
 `
 
-const Wrapper = styled.div`
-    width: 100%;
-    height: 72px;
-    margin-bottom: 24px;
-    display: flex;
-    flex-direction: column;
-    border-bottom: 2px solid lightgrey;
-    &:last-child {
-        margin-bottom: 8px;
-    }
-`
-
-const Label = styled.label`
-    font-size: 14px;
-    margin-left: 4px;
-    font-weight: 500;
-`
-
-const InputWrapper = styled.span`
-    width: 100%;
-    height: calc(100% - 14px);
-    display: flex;
-`
-
-const IconWrapper = styled.span`
-    height: 100%;
-    width: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
-
-const Icon = styled.img`
-    height: 40%;
-    height: 40%;
-    opacity: 0.4;
-`
-
-const Input = styled.input`
-    width: calc(100% - 36px);
-    height: 100%;
-    background: none;
-    border: none;
-    outline: none;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    &::placeholder {
-        font-weight: 700;
-    }
-`
-
 const ForgotButton = styled.button.attrs({
     type: 'button',
 })`
@@ -98,8 +47,8 @@ const LoginButton = styled.button.attrs({
     background: linear-gradient(
         90deg,
         rgba(0, 226, 224, 1) 20%,
-        rgba(120, 125, 255, 1) 43%,
-        rgba(221, 0, 220, 1) 71%
+        rgba(120, 125, 255, 1) 50%,
+        rgba(221, 0, 220, 1) 80%
     );
     color: white;
     font-weight: 700;
@@ -128,12 +77,6 @@ const RegisterButton = styled(Link).attrs({
 export {
     Form,
     Heading,
-    Wrapper,
-    Label,
-    InputWrapper,
-    IconWrapper,
-    Icon,
-    Input,
     ForgotButton,
     LoginButton,
     RegisterButton,

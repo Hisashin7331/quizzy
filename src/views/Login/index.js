@@ -1,18 +1,14 @@
 import React, { useState } from 'react'
 
-import person from 'assets/symbolic/person-outline.svg'
+import FormInput from 'components/atoms/FormInput'
+
+import email from 'assets/symbolic/email-outline.svg'
 import lock from 'assets/symbolic/lock-outline.svg'
 
 import { Content } from 'components/styles/Content'
 import {
     Form,
     Heading,
-    Wrapper,
-    Label,
-    InputWrapper,
-    IconWrapper,
-    Icon,
-    Input,
     ForgotButton,
     LoginButton,
     RegisterText,
@@ -21,56 +17,45 @@ import {
 
 const Login = () => {
     const [formData, setFormData] = useState({
-        username: '',
+        email: '',
         password: '',
     })
 
     const handleSubmit = event => {
         event.preventDefault()
-        console.log(event.target)
     }
+
     return (
         <Content alignCenter justifyCenter>
             <Form onSubmit={e => handleSubmit(e)}>
                 <Heading>Login</Heading>
-                <Wrapper>
-                    <Label>Username</Label>
-                    <InputWrapper>
-                        <IconWrapper>
-                            <Icon src={person} />
-                        </IconWrapper>
-                        <Input
-                            type='text'
-                            value={formData.username}
-                            onChange={e =>
-                                setFormData({
-                                    ...formData,
-                                    username: e.target.value,
-                                })
-                            }
-                            placeholder='Type your username'
-                        />
-                    </InputWrapper>
-                </Wrapper>
-                <Wrapper>
-                    <Label>Password</Label>
-                    <InputWrapper>
-                        <IconWrapper>
-                            <Icon src={lock} />
-                        </IconWrapper>
-                        <Input
-                            type='password'
-                            value={formData.password}
-                            onChange={e =>
-                                setFormData({
-                                    ...formData,
-                                    password: e.target.value,
-                                })
-                            }
-                            placeholder='Type your password'
-                        />
-                    </InputWrapper>
-                </Wrapper>
+                <FormInput
+                    type='email'
+                    label='Email'
+                    image={email}
+                    value={formData.username}
+                    onChange={e =>
+                        setFormData({
+                            ...formData,
+                            email: e.target.value,
+                        })
+                    }
+                    placeholder='Type your email'
+                />
+                <FormInput
+                    type='password'
+                    label='Password'
+                    image={lock}
+                    value={formData.password}
+                    onChange={e =>
+                        setFormData({
+                            ...formData,
+                            password: e.target.value,
+                        })
+                    }
+                    placeholder='Type your username'
+                />
+
                 <ForgotButton type='button'>
                     Forgot password?
                 </ForgotButton>

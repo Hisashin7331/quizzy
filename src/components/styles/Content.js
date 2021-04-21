@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 const Content = styled.div`
-    width: 1440px;
+    width: ${({ justifyCenter }) =>
+        justifyCenter ? 'auto' : '1440px'};
     box-sizing: border-box;
     margin-top: 64px;
     padding: 8px;

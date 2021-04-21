@@ -63,6 +63,7 @@ const QuizCreator = () => {
                             setQuizName={setQuizName}
                             quizTags={quizTags}
                             setQuizTags={setQuizTags}
+                            thumbnail={thumbnail}
                         />
                     </Section>
                     {renderSections().map(item => item)}

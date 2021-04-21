@@ -13,6 +13,7 @@ import ForYou from 'views/pages/ForYou'
 import Popular from 'views/pages/Popular'
 import Creator from 'views/Creator'
 import Login from 'views/Login'
+import Register from 'views/Register'
 import ScrollToTop from 'components/atoms/ScrollToTop'
 
 // srtyles
@@ -34,6 +35,7 @@ const App = () => {
                     <Route path='/popular' component={Popular} />
                     <Route path='/quiz/:id' />
                     <Route path='/login' component={Login} />
+                    <Route path='/register' component={Register} />
                     <Route path='/*'>
                         <h1>Jk</h1>
                     </Route>

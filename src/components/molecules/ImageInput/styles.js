@@ -1,9 +1,11 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-const Thumbnail = styled.div`
+const Image = styled.div`
     height: 100%;
     aspect-ratio: 16 / 9;
-    background: lightgrey;
+    background: lightgrey url(${props => props.image});
+    background-size: 100%;
+    background-position: center;
     position: relative;
     display: flex;
     align-items: center;
@@ -12,17 +14,18 @@ const Thumbnail = styled.div`
         opacity: 0.6;
     }
     cursor: pointer;
-`
-
-const Preview = styled.img`
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 100%;
-    width: auto;
-    object-fit: contain;
-    object-position: center;
-    z-index: 1;
+    ${props =>
+        props.rounded &&
+        css`
+            height: 128px;
+            width: 128px;
+            border-radius: 50%;
+            margin-bottom: 32px;
+            margin-top: -32px;
+            h3 {
+                font-size: 15px;
+            }
+        `}
 `
 
 const FileInput = styled.input.attrs({
@@ -49,6 +52,7 @@ const FileLabel = styled.label`
     img {
         height: 50%;
     }
+    cursor: pointer;
 `
 
 const Placeholder = styled.h3`
@@ -62,4 +66,4 @@ const Placeholder = styled.h3`
     transform: translate(-50%, -50%);
 `
 
-export { Thumbnail, FileInput, FileLabel, Preview, Placeholder }
+export { Image, FileInput, FileLabel, Placeholder }

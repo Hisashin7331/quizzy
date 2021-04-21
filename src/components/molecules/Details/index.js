@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ThumbnailInput from 'components/molecules/ThumbnailInput'
+import ThumbnailInput from 'components/molecules/ImageInput'
 
 import { Content, NameInput, TagsInput, Top } from './styles'
 
@@ -11,11 +11,15 @@ const Details = ({
     quizTags,
     setQuizTags,
     setThumbnail,
+    thumbnail,
 }) => {
     return (
         <Content>
             <Top>
-                <ThumbnailInput setThumbnail={setThumbnail} />
+                <ThumbnailInput
+                    setImage={setThumbnail}
+                    image={thumbnail}
+                />
                 <NameInput
                     value={quizName}
                     onChange={e => setQuizName(e.target.value)}
@@ -37,4 +41,9 @@ Details.propTypes = {
     quizTags: PropTypes.string.isRequired,
     setQuizTags: PropTypes.func.isRequired,
     setThumbnail: PropTypes.func.isRequired,
+    thumbnail: PropTypes.objectOf,
+}
+
+Details.defaultProps = {
+    thumbnail: undefined,
 }
