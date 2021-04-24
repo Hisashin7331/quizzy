@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { fetchLocal } from 'api/user'
 
 import browse from 'assets/icons/browse.svg'
 import foryou from 'assets/icons/foryou.svg'
@@ -6,6 +8,8 @@ import create from 'assets/icons/create.svg'
 import support from 'assets/icons/support.svg'
 import badge from 'assets/icons/badge.svg'
 import recent from 'assets/icons/recent.svg'
+
+import AccountTab from 'components/atoms/AccountTab'
 
 import {
     Wrapper,
@@ -18,6 +22,10 @@ import {
 } from './styles'
 
 const Navbar = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        fetchLocal(dispatch)
+    }, [])
     const navElements = [
         {
             name: 'Browse',
@@ -75,6 +83,7 @@ const Navbar = () => {
                             </NavigationButton>
                         )
                     })}
+                    <AccountTab />
                 </Navigation>
             </Wrapper>
         </Bar>

@@ -17,17 +17,8 @@ const Bar = styled.nav`
     left: 0;
 `
 
-const User = styled.div`
-    width: 100%;
-    height: 72px;
-    background: #232529;
-    position: absolute;
-    bottom: 0;
-`
-
 const Navigation = styled.div`
     display: flex;
-    grid-gap: 8px;
     color: white;
     align-items: center;
     gap: 16px;
@@ -78,7 +69,6 @@ const Wrapper = styled.div`
 
 export {
     Bar,
-    User,
     Navigation,
     NavigationButton,
     NavigationButtonIcon,

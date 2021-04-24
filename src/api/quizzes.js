@@ -1,8 +1,9 @@
-import axios from 'axios'
 import { config } from 'config'
 
+import api from './api'
+
 export const getRecentQuizzes = async (skip = 0, limit = 4) => {
-    const apiResult = await axios.get(
+    const apiResult = await api.get(
         `${config.apiURL}/quizzes/recentQuizzes`,
         {
             params: {
@@ -15,7 +16,7 @@ export const getRecentQuizzes = async (skip = 0, limit = 4) => {
 }
 
 export const getPopularQuizzes = async (skip = 0, limit = 4) => {
-    const apiResult = await axios.get(
+    const apiResult = await api.get(
         `${config.apiURL}/quizzes/popularQuizzes`,
         {
             params: {
@@ -28,15 +29,13 @@ export const getPopularQuizzes = async (skip = 0, limit = 4) => {
 }
 
 export const createQuiz = (quiz, thumbnail) => {
-    axios
-        .post(`${config.apiURL}/images/upload`, thumbnail)
-        .then(({ data }) => {
-            axios
-                .post(`${config.apiURL}/quizzes/createQuiz`, {
-                    author: 'jk',
-                    thumbnail: data,
-                    ...quiz,
-                })
-                .then(response => console.log(response))
-        })
+    api.post(`${config.apiURL}/images/upload`, thumbnail).then(
+        ({ data }) => {
+            api.post(`${config.apiURL}/quizzes/createQuiz`, {
+                author: 'jk',
+                thumbnail: data,
+                ...quiz,
+            }).then(response => console.log(response))
+        },
+    )
 }

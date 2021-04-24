@@ -1,5 +1,12 @@
 import React, { useState, createContext, useContext } from 'react'
 import PropTypes from 'prop-types'
+import { useToasts } from 'react-toast-notifications'
+import { signUp } from 'api/user'
+import {
+    detailsValidation,
+    preferencesValidation,
+    registerValidation,
+} from 'functions/registerValidation'
 
 import FormInput from 'components/atoms/FormInput'
 import ImageInput from 'components/molecules/ImageInput'
@@ -34,14 +41,38 @@ const Context = createContext({
     setAvatar: () => {},
     email: '',
     setEmail: () => {},
-    categories: [],
-    setCategories: () => {},
+    preferences: [],
+    setPreferences: () => {},
 })
 
 const Form = ({ children }) => {
-    const { index } = useContext(Context)
+    const { addToast } = useToasts()
+    const {
+        index,
+        username,
+        password,
+        avatar,
+        email,
+        preferences,
+    } = useContext(Context)
     const handleSubmit = event => {
         event.preventDefault()
+
+        const errors = preferencesValidation({ preferences })
+        if (errors.length > 0) {
+            addToast(errors[0], { appearance: 'warning' })
+            return
+        }
+
+        const file = new FormData()
+        file.append('file', avatar)
+        const formData = {
+            username,
+            password,
+            email,
+            preferences,
+        }
+        signUp(formData, file, addToast)
     }
     return (
         <FormStyled onSubmit={e => handleSubmit(e)}>
@@ -64,6 +95,8 @@ const Form = ({ children }) => {
 }
 
 const Registration = () => {
+    const { addToast } = useToasts()
+    const [repeatPassword, setRepeatPassword] = useState('')
     const {
         setIndex,
         password,
@@ -71,6 +104,20 @@ const Registration = () => {
         email,
         setEmail,
     } = useContext(Context)
+
+    const handleNext = () => {
+        const errors = registerValidation({
+            email,
+            password,
+            repeatPassword,
+        })
+        if (errors.length > 0) {
+            addToast(errors[0], { appearance: 'warning' })
+            return
+        }
+        setIndex(1)
+    }
+
     return (
         <>
             <Heading>Register</Heading>
@@ -90,12 +137,20 @@ const Registration = () => {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
             />
+            <FormInput
+                type='password'
+                label='Repeat password'
+                placeholder='Repeat your password'
+                image={lock}
+                value={repeatPassword}
+                onChange={e => setRepeatPassword(e.target.value)}
+            />
             <Wrapper>
                 <div style={{ width: '50%' }} />
                 <div style={{ width: '50%' }}>
                     <Button
                         type='button'
-                        onClick={() => setIndex(1)}
+                        onClick={handleNext}
                         disabled={!!(!password || !email)}
                     >
                         Next
@@ -107,6 +162,7 @@ const Registration = () => {
 }
 
 const Details = () => {
+    const { addToast } = useToasts()
     const {
         username,
         setUsername,
@@ -114,6 +170,14 @@ const Details = () => {
         setAvatar,
         avatar,
     } = useContext(Context)
+    const handleNext = () => {
+        const errors = detailsValidation({ username })
+        if (errors.length > 0) {
+            addToast(errors[0], { appearance: 'warning' })
+            return
+        }
+        setIndex(2)
+    }
     return (
         <>
             <Heading>Account</Heading>
@@ -137,7 +201,7 @@ const Details = () => {
                     </Button>
                 </div>
                 <div style={{ width: '50%' }}>
-                    <Button type='button' onClick={() => setIndex(2)}>
+                    <Button type='button' onClick={handleNext}>
                         Next
                     </Button>
                 </div>
@@ -147,7 +211,7 @@ const Details = () => {
 }
 
 const Preferences = () => {
-    const { setIndex, categories, setCategories } = useContext(
+    const { setIndex, preferences, setPreferences } = useContext(
         Context,
     )
 
@@ -161,14 +225,14 @@ const Preferences = () => {
     ]
 
     const handleChange = item => {
-        const newCategories = categories
-        const index = newCategories.indexOf(item)
+        const newPreferences = preferences
+        const index = newPreferences.indexOf(item)
         if (index !== -1) {
-            newCategories.splice(index, 1)
+            newPreferences.splice(index, 1)
         } else {
-            newCategories.push(item)
+            newPreferences.push(item)
         }
-        setCategories(newCategories)
+        setPreferences(newPreferences)
     }
 
     return (
@@ -182,7 +246,7 @@ const Preferences = () => {
                 {categoriesList.map(item => (
                     <Category
                         key={item}
-                        isChecked={categories.indexOf(item) !== -1}
+                        isChecked={preferences.indexOf(item) !== -1}
                     >
                         <Radio onChange={() => handleChange(item)} />
                         <Label>{item}</Label>
@@ -213,7 +277,7 @@ const Register = () => {
     const [password, setPassword] = useState('')
     const [avatar, setAvatar] = useState()
     const [email, setEmail] = useState('')
-    const [categories, setCategories] = useState([])
+    const [preferences, setPreferences] = useState([])
     return (
         <Content alignCenter justifyCenter>
             <Context.Provider
@@ -228,8 +292,8 @@ const Register = () => {
                     setAvatar,
                     email,
                     setEmail,
-                    categories,
-                    setCategories,
+                    preferences,
+                    setPreferences,
                 }}
             >
                 <Form>

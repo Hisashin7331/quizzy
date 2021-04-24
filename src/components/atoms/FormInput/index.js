@@ -44,11 +44,12 @@ FormInput.propTypes = {
     type: PropTypes.string,
     label: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string.isRequired,
 }
 
 FormInput.defaultProps = {
     type: 'text',
+    value: undefined,
 }

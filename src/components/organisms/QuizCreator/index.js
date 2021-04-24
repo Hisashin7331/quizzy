@@ -41,7 +41,11 @@ const QuizCreator = () => {
             setErrors,
         )
         if (errorsFound.length > 0) return
-        const data = { name: quizName, data: quizData }
+        const data = {
+            name: quizName,
+            data: quizData,
+            categories: [quizTags],
+        }
         const file = new FormData()
         file.append('file', thumbnail)
         createQuiz(data, file)

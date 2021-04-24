@@ -17,7 +17,7 @@ const Tile = ({ thumbnail, name, author, views, id }) => {
             <Image
                 src={
                     thumbnail &&
-                    `${config.apiURL}/images/thumbnail?thumbnail=${thumbnail}`
+                    `${config.apiURL}/images?image=${thumbnail}`
                 }
             />
             <Description>
@@ -34,7 +34,7 @@ const Tile = ({ thumbnail, name, author, views, id }) => {
 export default Tile
 
 Tile.propTypes = {
-    thumbnail: PropTypes.arrayOf(String),
+    thumbnail: PropTypes.string,
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,

@@ -1,5 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import upload from 'assets/icons/upload.svg'
@@ -7,21 +7,28 @@ import upload from 'assets/icons/upload.svg'
 import { FileInput, FileLabel, Image, Placeholder } from './styles'
 
 const ImageInput = ({ image, setImage, rounded }) => {
+    const [previewedImage, setPreviewedImage] = useState()
+    useEffect(() => {
+        setPreviewedImage(image)
+    }, [])
     const previewImage = event => {
         setImage(event.target.files[0])
+        setPreviewedImage(event.target.files[0])
     }
 
     return (
         <Image
             rounded={rounded}
-            image={image && URL.createObjectURL(image)}
+            image={
+                previewedImage && URL.createObjectURL(previewedImage)
+            }
         >
-            {!image && (
+            {!previewedImage && (
                 <Placeholder>
                     {rounded ? 'Avatar' : 'Thumbnail'}
                 </Placeholder>
             )}
-            <FileLabel isImageSet={image}>
+            <FileLabel isImageSet={previewedImage}>
                 <img src={upload} alt='upload file' />
                 <FileInput onChange={e => previewImage(e)} />
             </FileLabel>
@@ -34,7 +41,7 @@ export default ImageInput
 ImageInput.propTypes = {
     rounded: PropTypes.bool,
     setImage: PropTypes.func.isRequired,
-    image: PropTypes.arrayOf(PropTypes.string),
+    image: PropTypes.objectOf(PropTypes.string),
 }
 ImageInput.defaultProps = {
     rounded: false,

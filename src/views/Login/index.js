@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useToasts } from 'react-toast-notifications'
 
 import FormInput from 'components/atoms/FormInput'
 
 import email from 'assets/symbolic/email-outline.svg'
 import lock from 'assets/symbolic/lock-outline.svg'
+
+import { signIn } from 'api/user'
 
 import { Content } from 'components/styles/Content'
 import {
@@ -16,6 +21,9 @@ import {
 } from './styles'
 
 const Login = () => {
+    const { addToast } = useToasts()
+    const history = useHistory()
+    const dispatch = useDispatch()
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -23,6 +31,7 @@ const Login = () => {
 
     const handleSubmit = event => {
         event.preventDefault()
+        dispatch(signIn(formData, history, addToast))
     }
 
     return (
