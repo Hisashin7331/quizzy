@@ -1,4 +1,5 @@
 import { config } from 'config'
+import { createToast } from 'functions/createToast'
 
 import api from './api'
 
@@ -28,14 +29,26 @@ export const getPopularQuizzes = async (skip = 0, limit = 4) => {
     return apiResult.data
 }
 
-export const createQuiz = (quiz, thumbnail) => {
+export const createQuiz = (quiz, thumbnail, addToast) => {
     api.post(`${config.apiURL}/images/upload`, thumbnail).then(
         ({ data }) => {
             api.post(`${config.apiURL}/quizzes/createQuiz`, {
                 author: 'jk',
                 thumbnail: data,
                 ...quiz,
-            }).then(response => console.log(response))
+            }).then(response => createToast(addToast, response))
         },
     )
+}
+
+export const getQuiz = async id => {
+    const { data } = await api.get(
+        `${config.apiURL}/quizzes/getQuiz`,
+        { params: { id } },
+    )
+    return data
+}
+
+export const incrementViews = id => {
+    api.put(`${config.apiURL}/quizzes/incrementViews`, { id })
 }

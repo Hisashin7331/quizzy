@@ -17,9 +17,11 @@ import Popular from 'views/pages/Popular'
 import Creator from 'views/Creator'
 import Login from 'views/Login'
 import Register from 'views/Register'
+import Quiz from 'views/Quiz'
 import ScrollToTop from 'components/atoms/ScrollToTop'
 
 // styles
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import { GlobalStyle } from 'themes/GlobalStyle'
 import { Page } from './styles'
 
@@ -55,7 +57,10 @@ const App = () => {
                                 path='/popular'
                                 component={Popular}
                             />
-                            <Route path='/quiz/:id' />
+                            <Route
+                                path='/quiz/:id'
+                                component={Quiz}
+                            />
                             <Route path='/login' component={Login} />
                             <Route
                                 path='/register'

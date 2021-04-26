@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { quizValidation } from 'functions/quizValidation'
 import { createQuiz } from 'api/quizzes'
+import { useToasts } from 'react-toast-notifications'
 
 import Details from 'components/molecules/Details'
 import QuestionInput from 'components/molecules/QuestionInput'
@@ -17,6 +18,7 @@ const QuizCreator = () => {
     const [quizTags, setQuizTags] = useState('')
     const [thumbnail, setThumbnail] = useState()
     const [errors, setErrors] = useState([])
+    const { addToast } = useToasts()
 
     const renderSections = () => {
         const sections = []
@@ -48,7 +50,7 @@ const QuizCreator = () => {
         }
         const file = new FormData()
         file.append('file', thumbnail)
-        createQuiz(data, file)
+        createQuiz(data, file, addToast)
     }
 
     return (

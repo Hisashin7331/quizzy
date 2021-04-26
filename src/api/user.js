@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { config } from 'config'
 import { AUTH } from 'constants/actionTypes'
 import { createToast } from 'functions/createToast'
@@ -17,7 +18,10 @@ export const signIn = (
         return
     }
     createToast(addToast, data)
-    dispatch({ type: AUTH, payload: data })
+    dispatch({
+        type: AUTH,
+        payload: { ...data },
+    })
     history.push('/')
 }
 

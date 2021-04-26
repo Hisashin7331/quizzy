@@ -5,7 +5,6 @@ import { fetchLocal } from 'api/user'
 import browse from 'assets/icons/browse.svg'
 import foryou from 'assets/icons/foryou.svg'
 import create from 'assets/icons/create.svg'
-import support from 'assets/icons/support.svg'
 import badge from 'assets/icons/badge.svg'
 import recent from 'assets/icons/recent.svg'
 
@@ -51,16 +50,6 @@ const Navbar = () => {
             name: 'New Quiz',
             to: '/create',
             icon: create,
-        },
-        {
-            name: 'Support',
-            to: '/support',
-            icon: support,
-        },
-        {
-            name: 'Login',
-            to: '/login',
-            icon: support,
         },
     ]
     return (
