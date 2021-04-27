@@ -22,6 +22,7 @@ import ScrollToTop from 'components/atoms/ScrollToTop'
 
 // styles
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
+import 'react-circular-progressbar/dist/styles.css'
 import { GlobalStyle } from 'themes/GlobalStyle'
 import { Page } from './styles'
 

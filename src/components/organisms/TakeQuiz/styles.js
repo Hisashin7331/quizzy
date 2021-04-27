@@ -62,10 +62,71 @@ const NextQuestion = styled.button`
     margin-top: 32px;
 `
 
+const StyledSummary = styled.div`
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    top: 480px;
+    background: white;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.1);
+`
+
+const Heading = styled.h1`
+    font-size: 48px;
+    width: 100%;
+    height: 128px;
+    background: #17a2b8;
+    margin: 0;
+    color: white;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+const CircleWrapper = styled.div`
+    width: 160px;
+    margin: 0 16px;
+`
+
+const ButtonWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+    margin-bottom: 48px;
+`
+
+const ActionButton = styled.button`
+    width: 160px;
+    height: 48px;
+    margin: 8px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    background: ${props => (props.try ? '#17a2b8' : '#dc3545')};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+`
+
 export {
     Wrapper,
     QuestionWrapper,
     AnswersWrapper,
     Answer,
     NextQuestion,
+    StyledSummary,
+    Heading,
+    CircleWrapper,
+    ButtonWrapper,
+    ActionButton,
 }

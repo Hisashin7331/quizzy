@@ -1,6 +1,11 @@
 /* eslint-disable no-underscore-dangle */
 import React, { createContext, useState, useContext } from 'react'
 import PropTypes from 'prop-types'
+import {
+    CircularProgressbarWithChildren,
+    buildStyles,
+} from 'react-circular-progressbar'
+import { Link } from 'react-router-dom'
 
 import {
     Wrapper,
@@ -8,6 +13,11 @@ import {
     AnswersWrapper,
     Answer,
     NextQuestion,
+    StyledSummary,
+    Heading,
+    CircleWrapper,
+    ButtonWrapper,
+    ActionButton,
 } from './styles'
 
 const Context = createContext({
@@ -24,12 +34,58 @@ const Display = ({ children }) => {
 }
 
 const Summary = () => {
-    const { correctAnswers, questions } = useContext(Context)
+    const {
+        correctAnswers,
+        questions,
+        setIndex,
+        setCorrectAnswers,
+    } = useContext(Context)
+    const percentageScore = Math.round(
+        (correctAnswers.length / questions.length) * 100,
+    )
     return (
-        <h1>
-            Your score is{' '}
-            {`${correctAnswers.length}/${questions.length}`}
-        </h1>
+        <StyledSummary>
+            <Heading>Summary</Heading>
+            <CircleWrapper>
+                <CircularProgressbarWithChildren
+                    value={percentageScore}
+                    strokeWidth={12}
+                    styles={buildStyles({
+                        pathColor: '#17a2b8',
+                        pathTransition: 'ease',
+                        pathTransitionDuration: 5,
+                        strokeLinecap: 'butt',
+                    })}
+                >
+                    <h1
+                        style={{ margin: 0, fontSize: 32 }}
+                    >{`${percentageScore}%`}</h1>
+                    <h2
+                        style={{
+                            margin: 0,
+                            fontSize: 16,
+                            fontWeight: 500,
+                        }}
+                    >
+                        {correctAnswers.length}/{questions.length}
+                    </h2>
+                </CircularProgressbarWithChildren>
+            </CircleWrapper>
+            <ButtonWrapper>
+                <ActionButton as={Link} to='/'>
+                    Back
+                </ActionButton>
+                <ActionButton
+                    try
+                    onClick={() => {
+                        setIndex(0)
+                        setCorrectAnswers([])
+                    }}
+                >
+                    Try again
+                </ActionButton>
+            </ButtonWrapper>
+        </StyledSummary>
     )
 }
 
