@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { seo } from 'functions/seo'
 import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
@@ -7,11 +7,15 @@ import Recent from 'views/Landing/pages/Recent'
 import ForYou from 'views/Landing/pages/ForYou'
 import Popular from 'views/Landing/pages/Popular'
 import AccountTab from 'components/atoms/AccountTab'
+import Search from 'components/atoms/Search'
+import { Categories } from 'views/Landing/pages/Categories'
 
 import Content from 'components/styles/Content'
 import { Column } from 'components/styles/Column'
+import FindQuiz from './pages/FindQuiz'
 
 const Landing = ({ match }) => {
+    const [searchedValue, setSearchedValue] = useState('')
     useEffect(() => {
         seo({
             title: '',
@@ -22,6 +26,10 @@ const Landing = ({ match }) => {
     return (
         <Content>
             <Column wide>
+                <Search
+                    value={searchedValue}
+                    setValue={setSearchedValue}
+                />
                 <Route exact path={match.path} component={Popular} />
                 <Route
                     exact
@@ -32,6 +40,16 @@ const Landing = ({ match }) => {
                     exact
                     path={`${match.path}/foryou`}
                     component={ForYou}
+                />
+                <Route
+                    exact
+                    path={`${match.path}/search`}
+                    component={FindQuiz}
+                />
+                <Route
+                    exact
+                    path={`${match.path}/categories`}
+                    component={Categories}
                 />
             </Column>
             <Column>

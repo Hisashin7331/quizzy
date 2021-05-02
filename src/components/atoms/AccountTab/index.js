@@ -23,10 +23,10 @@ const AccountTab = ({ username, avatar, mobile }) => {
     return null
 }
 
-const mapStateToProps = ({ user: { authData } }) =>
-    authData && {
-        username: authData.username,
-        avatar: authData.avatar,
+const mapStateToProps = ({ user }) =>
+    user && {
+        username: user.username,
+        avatar: user.avatar,
     }
 
 export default connect(mapStateToProps)(AccountTab)

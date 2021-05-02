@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { config } from 'config'
-import { AUTH } from 'constants/actionTypes'
+import { AUTH, LOCAL, LOGOUT } from 'constants/actionTypes'
 import { createToast } from 'functions/createToast'
 import api from './api'
 
@@ -48,7 +48,7 @@ export const fetchLocal = dispatch => {
     const local = JSON.parse(localStorage.getItem('user'))
     if (local) {
         dispatch({
-            type: 'FETCH_LOCAL',
+            type: LOCAL,
             payload: local,
         })
     }
@@ -56,6 +56,6 @@ export const fetchLocal = dispatch => {
 
 export const logoutUser = dispatch => {
     dispatch({
-        type: 'USER_LOGOUT',
+        type: LOGOUT,
     })
 }

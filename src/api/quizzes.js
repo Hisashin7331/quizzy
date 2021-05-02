@@ -66,3 +66,14 @@ export const getQuiz = async id => {
 export const incrementViews = id => {
     api.put(`${config.apiURL}/quizzes/incrementViews`, { id })
 }
+
+export const getByQuery = async (query, skip, limit) => {
+    const result = api.get(`${config.apiURL}/quizzes/getByQuery`, {
+        params: {
+            query,
+            skip,
+            limit,
+        },
+    })
+    return result
+}

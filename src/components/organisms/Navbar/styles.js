@@ -40,6 +40,19 @@ const NavigationButton = styled(NavLink)`
     }
 `
 
+const LoginButton = styled.button`
+    height: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: #9f9f9f;
+    background: none;
+    border: none;
+    cursor: pointer;
+`
+
 const NavigationButtonIcon = styled.img`
     height: 24px;
     width: 24px;
@@ -122,6 +135,7 @@ const Hamburger = styled.button`
 export {
     Bar,
     Navigation,
+    LoginButton,
     NavigationButton,
     NavigationButtonIcon,
     NavigationButtonText,
