@@ -3,6 +3,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    Redirect,
 } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from 'store'
@@ -11,9 +12,7 @@ import { ToastProvider } from 'react-toast-notifications'
 // components
 import Landing from 'views/Landing'
 import Navbar from 'components/organisms/Navbar'
-import Recent from 'views/pages/Recent'
-import ForYou from 'views/pages/ForYou'
-import Popular from 'views/pages/Popular'
+
 import Creator from 'views/Creator'
 import Login from 'views/Login'
 import Register from 'views/Register'
@@ -36,27 +35,14 @@ const App = () => {
                         <GlobalStyle />
                         <Navbar />
                         <Switch>
+                            <Redirect exact from='/' to='/browse' />
                             <Route
-                                exact
-                                path='/'
+                                path='/browse'
                                 component={Landing}
                             />
                             <Route
                                 path='/create'
                                 component={Creator}
-                            />
-                            <Route
-                                exact
-                                path='/foryou'
-                                component={ForYou}
-                            />
-                            <Route
-                                path='/recent'
-                                component={Recent}
-                            />
-                            <Route
-                                path='/popular'
-                                component={Popular}
                             />
                             <Route
                                 path='/quiz/:id'

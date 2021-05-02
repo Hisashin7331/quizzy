@@ -1,23 +1,21 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react'
 
-import Heading from 'components/atoms/Heading'
 import Tile from 'components/atoms/Tile'
 import { seo } from 'functions/seo'
 
-import { getPopularQuizzes } from 'api/quizzes'
-import { Content } from 'components/styles/Content'
+import { getForYou } from 'api/quizzes'
 
 import { Tiles, LoadMoreButton } from './styles'
 
-const Popular = () => {
+const ForYou = () => {
     const [quizzes, setQuizzes] = useState([])
     const [isFetching, setIsFetching] = useState(true)
     const [skip, setSkip] = useState(0)
     const limit = 16
 
     useEffect(() => {
-        getPopularQuizzes(skip, limit).then(data => {
+        getForYou(skip, limit).then(data => {
             if (data.length > 0) {
                 setIsFetching(false)
                 setQuizzes(data)
@@ -25,7 +23,7 @@ const Popular = () => {
             }
         })
         seo({
-            title: 'Popular quizzes |',
+            title: 'ForYou quizzes |',
             description:
                 'Browse the most viewed quizzes on Quizzy. Create your own and see if you can be the best!',
         })
@@ -33,7 +31,7 @@ const Popular = () => {
 
     const loadMore = () => {
         setIsFetching(true)
-        getPopularQuizzes(skip, limit).then(data => {
+        getForYou(skip, limit).then(data => {
             setIsFetching(false)
             setSkip(skip + limit)
             if (data.length > 0) {
@@ -42,8 +40,7 @@ const Popular = () => {
         })
     }
     return (
-        <Content>
-            <Heading header='Popular' />
+        <>
             <Tiles>
                 {quizzes.map(item => (
                     <Tile
@@ -63,8 +60,8 @@ const Popular = () => {
                     <h1>LOADING...</h1>
                 )}
             </LoadMoreButton>
-        </Content>
+        </>
     )
 }
 
-export default Popular
+export default ForYou

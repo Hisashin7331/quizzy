@@ -1,10 +1,10 @@
-export const quizValidation = (name, data, tags, callback) => {
+export const quizValidation = (name, data, category, callback) => {
     const errors = []
     if (name.length < 8) {
         errors.push(`Quiz name must be at least 8 characters long`)
     }
-    if (!tags) {
-        errors.push(`Tags are empty`)
+    if (!category) {
+        errors.push(`Choose category are empty`)
     }
     const areQuestionsValid = []
     const areAnswersValid = []

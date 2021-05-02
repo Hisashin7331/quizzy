@@ -7,13 +7,15 @@ const Form = styled.form`
     box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.3);
     position: absolute;
     padding: 48px 64px;
-    top: 50%;
-    transform: translateY(-50%);
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     box-sizing: border-box;
+    @media (max-width: 820px) {
+        width: 100vw;
+        height: calc(100% - 64px);
+    }
 `
 
 const Heading = styled.h1`

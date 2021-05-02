@@ -11,6 +11,11 @@ const Content = styled.div`
     box-sizing: border-box;
     box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.1);
     margin-bottom: 16px;
+    @media (max-width: 560px) {
+        justify-content: flex-start;
+        gap: 16px;
+        height: auto;
+    }
 `
 
 const QuestionWrapper = styled.div`
@@ -33,6 +38,10 @@ const QuestionHeader = styled.span`
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
     color: white;
+    @media (max-width: 500px) {
+        font-size: 12px;
+        width: 30%;
+    }
 `
 
 const Question = styled.input.attrs({
@@ -48,6 +57,9 @@ const Question = styled.input.attrs({
     padding: 8px;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
+    @media (max-width: 500px) {
+        font-size: 12px;
+    }
 `
 
 const Answer = styled.input.attrs({
@@ -62,17 +74,26 @@ const Answer = styled.input.attrs({
     padding: 8px;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
+    @media (max-width: 500px) {
+        font-size: 12px;
+    }
 `
 
 const AnswersWrapper = styled.div`
     width: 100%;
-    height: 96px;
     display: grid;
     grid-template-columns: repeat(2, 49%);
     grid-template-rows: repeat(2, 48px);
     justify-content: space-between;
     align-content: space-between;
     grid-gap: 8px;
+    @media (max-width: 560px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: auto;
+    }
 `
 
 const Label = styled.div`
@@ -86,6 +107,9 @@ const Label = styled.div`
     align-items: center;
     position: relative;
     transition: all 150ms;
+    @media (max-width: 560px) {
+        height: 42px;
+    }
 `
 
 const HiddenCheckbox = styled.input.attrs({

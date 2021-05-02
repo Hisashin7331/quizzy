@@ -110,7 +110,8 @@ const Categories = styled.div`
 const Category = styled.label`
     height: 32px;
     width: auto;
-    margin: 4px;
+    margin: 2px;
+    font-size: 14px;
 
     input:checked + span {
         background: #28a745;

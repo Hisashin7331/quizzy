@@ -9,7 +9,7 @@ import { useToasts } from 'react-toast-notifications'
 import Numbers from 'components/atoms/Numbers'
 import TakeQuiz from 'components/organisms/TakeQuiz'
 
-import { Content } from 'components/styles/Content'
+import Content from 'components/styles/Content'
 import {
     Wrapper,
     Column,
@@ -85,11 +85,9 @@ const Quiz = () => {
                                         </QuizAuthor>
                                     </span>
                                     <span>
-                                        {quiz.categories.map(item => (
-                                            <Category key={item}>
-                                                {item}
-                                            </Category>
-                                        ))}
+                                        <Category>
+                                            {quiz.category}
+                                        </Category>
                                     </span>
                                 </Info>
                                 <TakeButton

@@ -2,12 +2,10 @@
 import React, { useState, useEffect } from 'react'
 import { seo } from 'functions/seo'
 
-import Heading from 'components/atoms/Heading'
 import Tile from 'components/atoms/Tile'
 
 import { getRecentQuizzes } from 'api/quizzes'
 
-import { Content } from 'components/styles/Content'
 import { Tiles, LoadMoreButton } from './styles'
 
 const Recent = () => {
@@ -42,12 +40,12 @@ const Recent = () => {
         })
     }
     return (
-        <Content>
-            <Heading header='Recent' />
+        <>
             <Tiles>
                 {quizzes.map(item => (
                     <Tile
                         thumbnail={item.thumbnail}
+                        id={item._id}
                         key={item._id}
                         name={item.name}
                         author={item.author}
@@ -63,7 +61,7 @@ const Recent = () => {
                     <h1>LOADING...</h1>
                 )}
             </LoadMoreButton>
-        </Content>
+        </>
     )
 }
 

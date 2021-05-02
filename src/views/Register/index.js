@@ -7,6 +7,7 @@ import {
     preferencesValidation,
     registerValidation,
 } from 'functions/registerValidation'
+import { categories as categoriesList } from 'constants/categories'
 
 import FormInput from 'components/atoms/FormInput'
 import ImageInput from 'components/molecules/ImageInput'
@@ -15,7 +16,7 @@ import person from 'assets/symbolic/person-outline.svg'
 import lock from 'assets/symbolic/lock-outline.svg'
 import questionMarks from 'assets/images/question-marks.jpg'
 
-import { Content } from 'components/styles/Content'
+import Content from 'components/styles/Content'
 import {
     FormStyled,
     Side,
@@ -215,15 +216,6 @@ const Preferences = () => {
         Context,
     )
 
-    const categoriesList = [
-        'IT',
-        'Art',
-        'Music',
-        'Movies',
-        'TV Series',
-        'World',
-    ]
-
     const handleChange = item => {
         const newPreferences = preferences
         const index = newPreferences.indexOf(item)
@@ -239,9 +231,6 @@ const Preferences = () => {
         <>
             <Heading>Preferences</Heading>
 
-            <h6 style={{ marginTop: 0 }}>
-                Choose at least one category
-            </h6>
             <Categories>
                 {categoriesList.map(item => (
                     <Category

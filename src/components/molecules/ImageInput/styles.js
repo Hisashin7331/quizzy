@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 const Image = styled.div`
-    height: 100%;
+    min-height: 128px;
     aspect-ratio: 16 / 9;
     background: lightgrey url(${props => props.image});
     background-size: 100%;
@@ -64,6 +64,9 @@ const Placeholder = styled.h3`
     top: 50%;
     opacity: 0.2;
     transform: translate(-50%, -50%);
+    @media (max-width: 316px) {
+        font-size: 16px;
+    }
 `
 
 export { Image, FileInput, FileLabel, Placeholder }

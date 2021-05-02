@@ -17,7 +17,7 @@ const NameInput = styled.textarea.attrs({
 })`
     resize: none;
     width: 100%;
-    height: 100%;
+    height: auto;
     background: none;
     border: none;
     margin: 0 8px;
@@ -28,6 +28,9 @@ const NameInput = styled.textarea.attrs({
     color: black;
     font-family: 'Roboto', sans-serif;
     overflow: hidden;
+    @media (max-width: 400px) {
+        font-size: 16px;
+    }
 `
 
 const TagsInput = styled.input.attrs({
@@ -52,6 +55,29 @@ const Top = styled.div`
     height: 60%;
     width: 100%;
     display: flex;
+    b,
+    select {
+        height: 32px;
+        cursor: pointer;
+        border: none;
+        @media (max-width: 400px) {
+            font-size: 12px;
+        }
+        outline: 0;
+    }
+    b {
+        margin-left: 24px;
+    }
+    @media (max-width: 796px) {
+        flex-direction: column;
+
+        b {
+            margin-left: 0;
+        }
+    }
+    & > * {
+        margin: 8px;
+    }
 `
 
 export { Top, Content, NameInput, TagsInput }

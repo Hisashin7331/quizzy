@@ -29,14 +29,28 @@ export const getPopularQuizzes = async (skip = 0, limit = 4) => {
     return apiResult.data
 }
 
+export const getForYou = async (skip = 0, limit = 16) => {
+    const apiResult = await api.get(
+        `${config.apiURL}/quizzes/forYou`,
+        {
+            params: {
+                skip,
+                limit,
+            },
+        },
+    )
+    return apiResult.data
+}
+
 export const createQuiz = (quiz, thumbnail, addToast) => {
     api.post(`${config.apiURL}/images/upload`, thumbnail).then(
         ({ data }) => {
             api.post(`${config.apiURL}/quizzes/createQuiz`, {
-                author: 'jk',
                 thumbnail: data,
                 ...quiz,
-            }).then(response => createToast(addToast, response))
+            }).then(response => {
+                createToast(addToast, response)
+            })
         },
     )
 }

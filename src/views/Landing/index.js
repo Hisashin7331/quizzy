@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react'
 import { seo } from 'functions/seo'
+import { Route } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-import Section from 'components/molecules/Section'
+import Recent from 'views/Landing/pages/Recent'
+import ForYou from 'views/Landing/pages/ForYou'
+import Popular from 'views/Landing/pages/Popular'
+import AccountTab from 'components/atoms/AccountTab'
 
-import { getRecentQuizzes, getPopularQuizzes } from 'api/quizzes'
+import Content from 'components/styles/Content'
+import { Column } from 'components/styles/Column'
 
-import { Content } from 'components/styles/Content'
-
-const Landing = () => {
+const Landing = ({ match }) => {
     useEffect(() => {
         seo({
             title: '',
@@ -17,19 +21,34 @@ const Landing = () => {
     })
     return (
         <Content>
-            {/* <Section header='For you' /> */}
-            <Section
-                header='Most recent'
-                apiCall={getRecentQuizzes}
-                buttonPath='/recent'
-            />
-            <Section
-                header='Most popular'
-                apiCall={getPopularQuizzes}
-                buttonPath='/popular'
-            />
+            <Column wide>
+                <Route exact path={match.path} component={Popular} />
+                <Route
+                    exact
+                    path={`${match.path}/recent`}
+                    component={Recent}
+                />
+                <Route
+                    exact
+                    path={`${match.path}/foryou`}
+                    component={ForYou}
+                />
+            </Column>
+            <Column>
+                <AccountTab />
+            </Column>
         </Content>
     )
 }
 
 export default Landing
+
+Landing.propTypes = {
+    match: PropTypes.objectOf(
+        PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.string,
+            PropTypes.object,
+        ]),
+    ).isRequired,
+}

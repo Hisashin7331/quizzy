@@ -1,52 +1,53 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 
 const Wrapper = styled.div`
-    height: 64px;
-    background: #232529;
+    width: 100%;
+    background: white;
+    box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.15);
     box-sizing: border-box;
+    padding: 32px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-`
-
-const UserData = styled.div`
-    min-width: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 0 8px;
+    ${props =>
+        props.mobile &&
+        css`
+            background: none;
+            margin-top: 64px;
+            max-width: 256px;
+            box-shadow: none;
+            color: white;
+        `}
 `
 
 const Avatar = styled.img`
-    height: 48px;
-    width: 48px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
 `
 
 const Username = styled.h1`
     font-family: 'Roboto';
-    font-size: 16px;
-    margin: 8px;
+    font-size: 24px;
+    margin-top: 16px;
 `
 
-const Logout = styled.button`
-    background: none;
-    border: none;
-    cursor: pointer;
-`
-
-const Login = styled(Link).attrs({ to: '/login' })`
-    width: 128px;
-    height: 100%;
-    color: white;
-    font-family: 'Roboto', sans-serif;
+const AccountButton = styled(Link).attrs({
+    to: 'account',
+})`
+    width: 100%;
+    background: #17a2b8;
+    text-decoration: none;
+    height: 40px;
+    border-radius: 64px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
-    text-decoration: none;
-    cursor: pointer;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.2);
 `
 
-export { Avatar, Wrapper, Username, Logout, Login, UserData }
+export { Avatar, Wrapper, Username, AccountButton }

@@ -10,7 +10,7 @@ import lock from 'assets/symbolic/lock-outline.svg'
 
 import { signIn } from 'api/user'
 
-import { Content } from 'components/styles/Content'
+import Content from 'components/styles/Content'
 import {
     Form,
     Heading,
@@ -35,7 +35,7 @@ const Login = () => {
     }
 
     return (
-        <Content alignCenter justifyCenter>
+        <Content center>
             <Form onSubmit={e => handleSubmit(e)}>
                 <Heading>Login</Heading>
                 <FormInput

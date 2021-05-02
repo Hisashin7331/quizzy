@@ -153,6 +153,7 @@ const Question = ({
 const TakeQuiz = ({ questions }) => {
     const [index, setIndex] = useState(0)
     const [correctAnswers, setCorrectAnswers] = useState([])
+
     const renderChildrens = () => {
         const childrens = []
         questions.forEach((item, i) => {
@@ -169,6 +170,7 @@ const TakeQuiz = ({ questions }) => {
         childrens.push(<Summary />)
         return childrens
     }
+
     return (
         <Context.Provider
             value={{

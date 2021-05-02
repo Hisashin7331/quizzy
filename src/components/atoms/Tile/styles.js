@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Styled = styled(Link)`
     text-decoration: none;
-    width: 24%;
-    margin: 0.5%;
+    width: 100%;
     position: relative;
     cursor: pointer;
     display: flex;

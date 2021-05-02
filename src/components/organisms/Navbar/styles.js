@@ -1,10 +1,10 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
 const Bar = styled.nav`
     width: 100vw;
     height: 64px;
-    z-index: 9999999999;
+    z-index: 9999;
     background: #121212;
     display: flex;
     align-items: center;
@@ -22,6 +22,9 @@ const Navigation = styled.div`
     color: white;
     align-items: center;
     gap: 16px;
+    @media screen and (max-width: 1023px) {
+        display: none;
+    }
 `
 
 const NavigationButton = styled(NavLink)`
@@ -57,6 +60,7 @@ const Logo = styled(NavLink)`
     color: white;
     margin: 0;
     text-decoration: none;
+    z-index: 9999999999999;
 `
 
 const Wrapper = styled.div`
@@ -65,6 +69,54 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (min-width: 1081px) and (max-width: 1440px) {
+        width: 1080px;
+    }
+    @media screen and (max-width: 1080px) {
+        width: 100%;
+    }
+`
+
+const Hamburger = styled.button`
+    width: 32px;
+    height: 32px;
+    background: none;
+    @media (min-width: 1024px) {
+        display: none;
+    }
+    display: flex;
+    align-items: center;
+    border: none;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 9999999999999;
+    & > span {
+        background: white;
+        border-radius: 64px;
+        height: 4px;
+        width: 32px;
+        padding: 0;
+        margin: 0;
+        transition: 0.5s;
+        transform-origin: 0 0;
+    }
+
+    ${props =>
+        props.isActive &&
+        css`
+            & > span:nth-child(1) {
+                transform: rotate(45deg) translate(1px, -2px);
+            }
+
+            & > span:nth-child(2) {
+                transform: scaleX(0);
+            }
+
+            & > span:nth-child(3) {
+                transform: rotate(-45deg) translate(-2px, 0);
+            }
+        `}
 `
 
 export {
@@ -75,4 +127,5 @@ export {
     NavigationButtonText,
     Logo,
     Wrapper,
+    Hamburger,
 }
