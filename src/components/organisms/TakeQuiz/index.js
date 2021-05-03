@@ -43,6 +43,22 @@ const Summary = () => {
     const percentageScore = Math.round(
         (correctAnswers.length / questions.length) * 100,
     )
+
+    const renderSummaryMessage = score => {
+        if (score > 80) {
+            return 'You are a real master!'
+        }
+        if (score > 60 && score <= 80) {
+            return `WOW! You know a lot about it, next time you're going to get 100%!`
+        }
+        if (score > 40 && score <= 60) {
+            return `Average score isn't that bad, maybe try again?`
+        }
+        if (score > 20 && score <= 40) {
+            return `Next time will be better!`
+        }
+        return `Unlucky :( Maybe try again?`
+    }
     return (
         <StyledSummary>
             <Heading>Summary</Heading>
@@ -71,6 +87,9 @@ const Summary = () => {
                     </h2>
                 </CircularProgressbarWithChildren>
             </CircleWrapper>
+            <h3 style={{ padding: '32px' }}>
+                {renderSummaryMessage(percentageScore)}
+            </h3>
             <ButtonWrapper>
                 <ActionButton as={Link} to='/'>
                     Back
@@ -123,7 +142,9 @@ const Question = ({
         <Wrapper>
             <QuestionWrapper>
                 <span>{question}</span>
-                <span>{`${questionNumber}/${numberOfQuestions}`}</span>
+                <span
+                    style={{ margin: '0 0 64px 64px' }}
+                >{`${questionNumber}/${numberOfQuestions}`}</span>
             </QuestionWrapper>
             <AnswersWrapper>
                 {answers.map((item, i) => (

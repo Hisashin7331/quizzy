@@ -17,6 +17,7 @@ import Creator from 'views/Creator'
 import Login from 'views/Login'
 import Register from 'views/Register'
 import Quiz from 'views/Quiz'
+import E404 from 'views/404'
 import ScrollToTop from 'components/atoms/ScrollToTop'
 
 // styles
@@ -53,9 +54,7 @@ const App = () => {
                                 path='/register'
                                 component={Register}
                             />
-                            <Route path='/*'>
-                                <h1>Jk</h1>
-                            </Route>
+                            <Route path='/*' component={E404} />
                         </Switch>
                     </Page>
                 </ToastProvider>

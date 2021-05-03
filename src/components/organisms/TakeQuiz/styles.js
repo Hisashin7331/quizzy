@@ -4,6 +4,10 @@ const Wrapper = styled.div`
     width: 1080px;
     display: flex;
     flex-direction: column;
+    @media (max-width: 1079px) {
+        width: 100%;
+        height: 100%;
+    }
 `
 
 const QuestionWrapper = styled.span`
@@ -18,6 +22,10 @@ const QuestionWrapper = styled.span`
     min-height: 128px;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 640px) {
+        height: calc(50% - 48px);
+        margin: 0;
+    }
 `
 
 const AnswersWrapper = styled.div`
@@ -27,6 +35,11 @@ const AnswersWrapper = styled.div`
     grid-template-rows: auto;
     gap: 16px;
     box-sizing: border-box;
+    @media (max-width: 640px) {
+        height: 50%;
+        gap: 0;
+        grid-template-columns: repeat(2, 50%);
+    }
 `
 
 const Answer = styled.span`
@@ -46,8 +59,27 @@ const Answer = styled.span`
             if (!isCorrect && isSelected) {
                 return 'red'
             }
-            return 'transparent'
+            return 'lightgrey'
         }};
+    @media (max-width: 1079px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        border: 8px solid
+            ${({ isSelected, isCorrect }) => {
+                if (isCorrect && isSelected) {
+                    return 'green'
+                }
+                if (isCorrect) {
+                    return 'green'
+                }
+                if (!isCorrect && isSelected) {
+                    return 'red'
+                }
+                return 'lightgrey'
+            }};
+    }
 `
 
 const NextQuestion = styled.button`
@@ -60,6 +92,11 @@ const NextQuestion = styled.button`
     color: white;
     font-weight: 700;
     margin-top: 32px;
+    @media (max-width: 1079px) {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
 `
 
 const StyledSummary = styled.div`
@@ -74,6 +111,18 @@ const StyledSummary = styled.div`
     flex-direction: column;
     align-items: center;
     box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.1);
+    @media (max-width: 900px) {
+        width: 100vw;
+        height: 100%;
+        position: static;
+        left: 0;
+        transform: none;
+    }
+    @media (max-height: 1024px) {
+        top: 64px;
+        transform: none;
+        left: auto;
+    }
 `
 
 const Heading = styled.h1`

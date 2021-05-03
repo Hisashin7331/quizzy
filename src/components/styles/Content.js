@@ -20,6 +20,7 @@ const Styled = styled.div`
 
 const Wrapper = styled.div`
     width: 100%;
+    height: 100%;
     box-sizing: border-box;
     display: flex;
     ${props =>
@@ -28,12 +29,20 @@ const Wrapper = styled.div`
             align-items: center;
             justify-content: center;
         `}
+
+    ${props =>
+        props.justify &&
+        css`
+            justify-content: center;
+        `}
 `
 
-const Content = ({ children, center }) => {
+const Content = ({ children, center, justify }) => {
     return (
         <Styled>
-            <Wrapper center={center}>{children}</Wrapper>
+            <Wrapper center={center} justify={justify}>
+                {children}
+            </Wrapper>
         </Styled>
     )
 }
@@ -46,8 +55,10 @@ Content.propTypes = {
         PropTypes.arrayOf(PropTypes.element),
     ]).isRequired,
     center: PropTypes.bool,
+    justify: PropTypes.bool,
 }
 
 Content.defaultProps = {
+    justify: false,
     center: false,
 }

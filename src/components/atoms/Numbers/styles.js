@@ -10,6 +10,12 @@ const Wrapper = styled.div`
     background: white;
     margin-top: 16px;
     box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.2);
+    @media (max-width: 1279px) {
+        margin: 0;
+        width: 33.3%;
+        box-shadow: none;
+        padding-bottom: 8px;
+    }
 `
 
 const Number = styled.h1`

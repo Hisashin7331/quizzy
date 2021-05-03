@@ -11,6 +11,7 @@ import TakeQuiz from 'components/organisms/TakeQuiz'
 
 import Content from 'components/styles/Content'
 import {
+    Mobile,
     Wrapper,
     Column,
     Image,
@@ -47,7 +48,7 @@ const Quiz = () => {
         })
     }, [id])
     return (
-        <Content justifyCenter>
+        <Content justify>
             {!isFetching && quiz ? (
                 <Wrapper>
                     {isUserTakingQuiz ? (
@@ -74,6 +75,11 @@ const Quiz = () => {
                                 </NumbersWrapper>
                             </Column>
                             <Column wide>
+                                <Mobile>
+                                    <Image
+                                        src={`${config.apiURL}/images?image=${quiz.thumbnail}`}
+                                    />
+                                </Mobile>
                                 <Info>
                                     <span>
                                         <QuizName>
@@ -86,10 +92,27 @@ const Quiz = () => {
                                     </span>
                                     <span>
                                         <Category>
+                                            <b>Category:</b>{' '}
                                             {quiz.category}
                                         </Category>
                                     </span>
                                 </Info>
+                                <Mobile>
+                                    <NumbersWrapper>
+                                        <Numbers
+                                            number={quiz.data.length}
+                                            description='questions'
+                                        />
+                                        <Numbers
+                                            number={quiz.views}
+                                            description='views'
+                                        />
+                                        <Numbers
+                                            number={0}
+                                            description='likes'
+                                        />
+                                    </NumbersWrapper>
+                                </Mobile>
                                 <TakeButton
                                     onClick={() =>
                                         setIsUserTakingQuiz(true)
