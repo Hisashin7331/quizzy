@@ -68,7 +68,7 @@ export const incrementViews = id => {
 }
 
 export const getByQuery = async (query, skip, limit) => {
-    const result = api.get(`${config.apiURL}/quizzes/getByQuery`, {
+    const result = await api.get(`${config.apiURL}/quizzes/search`, {
         params: {
             query,
             skip,

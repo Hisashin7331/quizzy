@@ -10,10 +10,17 @@ const FormStyled = styled.form`
     top: 50%;
     transform: translateY(-50%);
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     box-sizing: border-box;
+    @media (max-width: 1279px) {
+        width: 100%;
+    }
+    @media (max-height: 800px) {
+        min-height: 100%;
+        height: auto;
+        padding-top: 64px;
+    }
 `
 
 const Side = styled.div`
@@ -28,6 +35,24 @@ const Side = styled.div`
             display: flex;
             align-items: center;
             flex-direction: column;
+            justify-content: flex-start;
+            @media (max-width: 1279px) {
+                width: calc(100% - 512px);
+            }
+            @media (max-width: 1024px) {
+                width: 100%;
+                padding: 24px 32px;
+            }
+        `}
+    ${props =>
+        !props.form &&
+        css`
+            @media (max-width: 1279px) {
+                width: 512px;
+            }
+            @media (max-width: 1024px) {
+                display: none;
+            }
         `}
     & > span {
         width: 100%;

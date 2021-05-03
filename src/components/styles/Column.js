@@ -36,6 +36,9 @@ const Column = styled.div`
                 width: 100%;
                 margin: 0;
             }
+            @media (max-height: 800px) {
+                min-height: 100%;
+            }
         `}
 `
 

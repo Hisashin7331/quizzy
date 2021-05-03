@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react'
 import { seo } from 'functions/seo'
+import Loader from 'react-loader-spinner'
 
 import Tile from 'components/atoms/Tile'
 
@@ -12,6 +13,7 @@ const Recent = () => {
     const [quizzes, setQuizzes] = useState([])
     const [isFetching, setIsFetching] = useState(true)
     const [skip, setSkip] = useState(0)
+    const [isMore, setIsMore] = useState(true)
     const limit = 16
 
     useEffect(() => {
@@ -20,6 +22,9 @@ const Recent = () => {
                 setIsFetching(false)
                 setQuizzes(data)
                 setSkip(skip + limit)
+            }
+            if (data.length < 16) {
+                setIsMore(false)
             }
         })
         seo({
@@ -54,12 +59,22 @@ const Recent = () => {
                 ))}
             </Tiles>
 
+            {isFetching && (
+                <Loader
+                    style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                    }}
+                    type='Circles'
+                    height={80}
+                    width={80}
+                />
+            )}
+
             <LoadMoreButton onClick={loadMore} type='button'>
-                {!isFetching ? (
-                    <h1>LOAD MORE</h1>
-                ) : (
-                    <h1>LOADING...</h1>
-                )}
+                {!isFetching && isMore && <h1>LOAD MORE</h1>}
             </LoadMoreButton>
         </>
     )

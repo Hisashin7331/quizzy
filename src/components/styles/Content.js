@@ -13,6 +13,9 @@ const Styled = styled.div`
     @media screen and (max-width: 1279px) {
         width: 100vw;
     }
+    @media (max-height: 1079px) {
+        margin-top: 64px;
+    }
 `
 
 const Wrapper = styled.div`

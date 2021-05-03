@@ -6,7 +6,10 @@ const Wrapper = styled.form`
     height: 48px;
     display: flex;
     box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.1);
-    position: relative;
+    align-self: flex-start;
+    position: sticky;
+    top: 64px;
+    z-index: 99999999;
 `
 
 const Input = styled.input.attrs({

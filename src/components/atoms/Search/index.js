@@ -19,7 +19,12 @@ import {
     Heading,
 } from './styles'
 
-const Search = ({ value, setValue }) => {
+const Search = ({
+    value,
+    setValue,
+    shouldRerender,
+    setShouldRerender,
+}) => {
     const [isOpened, setIsOpened] = useState(false)
 
     const history = useHistory()
@@ -28,6 +33,7 @@ const Search = ({ value, setValue }) => {
         e.preventDefault()
 
         history.push(`/browse/search?query=${value}`)
+        setShouldRerender(!shouldRerender)
     }
 
     return (
@@ -40,7 +46,10 @@ const Search = ({ value, setValue }) => {
             <Submit>
                 <img src={submit} alt='submit icon' />
             </Submit>
-            <Filter onClick={() => setIsOpened(!isOpened)}>
+            <Filter
+                type='button'
+                onClick={() => setIsOpened(!isOpened)}
+            >
                 <img src={filter} alt='filter icon' />
             </Filter>
             <Dropdown isOpened={isOpened}>
@@ -82,6 +91,8 @@ export default Search
 Search.propTypes = {
     value: PropTypes.string,
     setValue: PropTypes.func.isRequired,
+    setShouldRerender: PropTypes.func.isRequired,
+    shouldRerender: PropTypes.bool.isRequired,
 }
 
 Search.defaultProps = {

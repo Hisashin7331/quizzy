@@ -16,6 +16,7 @@ import FindQuiz from './pages/FindQuiz'
 
 const Landing = ({ match }) => {
     const [searchedValue, setSearchedValue] = useState('')
+    const [shouldRerender, setShouldRerender] = useState(false)
     useEffect(() => {
         seo({
             title: '',
@@ -27,8 +28,11 @@ const Landing = ({ match }) => {
         <Content>
             <Column wide>
                 <Search
+                    onlyFilter
                     value={searchedValue}
                     setValue={setSearchedValue}
+                    setShouldRerender={setShouldRerender}
+                    shouldRerender={shouldRerender}
                 />
                 <Route exact path={match.path} component={Popular} />
                 <Route
@@ -44,7 +48,9 @@ const Landing = ({ match }) => {
                 <Route
                     exact
                     path={`${match.path}/search`}
-                    component={FindQuiz}
+                    render={() => (
+                        <FindQuiz shouldRerender={shouldRerender} />
+                    )}
                 />
                 <Route
                     exact
