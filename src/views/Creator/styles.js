@@ -55,7 +55,7 @@ const MobileButtonsWrapper = styled.div`
     margin: 0;
     background: white;
     box-shadow: 0 0 16px 1px rgb(0, 0, 0, 0.4);
-    height: 64px;
+    height: 54px;
     justify-content: center;
 `
 

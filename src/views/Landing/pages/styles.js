@@ -3,19 +3,15 @@ import styled from 'styled-components'
 const Tiles = styled.div`
     width: 100%;
     height: auto;
-    top: 0;
     box-sizing: border-box;
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: repeat(2, 48%);
     grid-gap: 16px;
     justify-content: center;
-    justify-items: center;
-    align-content: flex-start;
-    align-items: center;
     position: relative;
     @media (max-width: 720px) {
-        grid-template-columns: 90%;
+        grid-template-columns: repeat(1, 90%);
     }
 `
 

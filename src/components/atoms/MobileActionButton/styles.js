@@ -18,6 +18,7 @@ const Wrapper = styled.button`
 `
 
 const Label = styled.label`
+    font-family: 'Roboto', sans-serif;
     font-size: 12px;
     font-weight: 700;
 `

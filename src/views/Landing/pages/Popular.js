@@ -72,9 +72,11 @@ const Popular = () => {
                 />
             )}
 
-            <LoadMoreButton onClick={loadMore} type='button'>
-                {!isFetching && isMore && <h1>LOAD MORE</h1>}
-            </LoadMoreButton>
+            {!isFetching && isMore && (
+                <LoadMoreButton onClick={loadMore} type='button'>
+                    <h1>LOAD MORE</h1>
+                </LoadMoreButton>
+            )}
         </>
     )
 }

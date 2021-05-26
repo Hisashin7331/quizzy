@@ -9,7 +9,7 @@ const Wrapper = styled.form`
     align-self: flex-start;
     position: sticky;
     top: 64px;
-    z-index: 99999999;
+    z-index: 99;
 `
 
 const Input = styled.input.attrs({

@@ -5,6 +5,7 @@ import {
     Route,
     Redirect,
 } from 'react-router-dom'
+import PrivateRoute from 'components/atoms/PrivateRoute'
 import { Provider } from 'react-redux'
 import { store } from 'store'
 import { ToastProvider } from 'react-toast-notifications'
@@ -17,6 +18,7 @@ import Creator from 'views/Creator'
 import Login from 'views/Login'
 import Register from 'views/Register'
 import Quiz from 'views/Quiz'
+import Account from 'views/Account'
 import E404 from 'views/404'
 import ScrollToTop from 'components/atoms/ScrollToTop'
 
@@ -53,6 +55,10 @@ const App = () => {
                             <Route
                                 path='/register'
                                 component={Register}
+                            />
+                            <PrivateRoute
+                                path='/account'
+                                component={Account}
                             />
                             <Route path='/*' component={E404} />
                         </Switch>

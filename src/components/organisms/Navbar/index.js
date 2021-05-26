@@ -1,9 +1,13 @@
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, connect } from 'react-redux'
-import { fetchLocal, logoutUser } from 'api/user'
+import { fetchLocal } from 'api/user'
+import { useHistory } from 'react-router-dom'
 
-import Menu from 'components/atoms/Menu'
+import Menu from 'components/molecules/Menu'
+import AccountTab from 'components/atoms/AccountTab'
 
 import browse from 'assets/icons/browse.svg'
 import create from 'assets/icons/create.svg'
@@ -14,7 +18,6 @@ import {
     Bar,
     Navigation,
     NavigationButton,
-    LoginButton,
     NavigationButtonIcon,
     NavigationButtonText,
     Logo,
@@ -24,9 +27,15 @@ import {
 const Navbar = ({ isLoggedin }) => {
     const [isMenuOpened, setIsMenuOpened] = useState(false)
     const dispatch = useDispatch()
+    const history = useHistory()
     useEffect(() => {
         fetchLocal(dispatch)
     }, [])
+
+    useEffect(() => {
+        return history.listen(() => setIsMenuOpened(false))
+    }, [history])
+
     const navElements = [
         {
             name: 'Browse',
@@ -68,14 +77,7 @@ const Navbar = ({ isLoggedin }) => {
                             </NavigationButtonText>
                         </NavigationButton>
                     ) : (
-                        <LoginButton
-                            onClick={() => logoutUser(dispatch)}
-                        >
-                            <NavigationButtonIcon src={login} />
-                            <NavigationButtonText>
-                                Logout
-                            </NavigationButtonText>
-                        </LoginButton>
+                        <AccountTab />
                     )}
                 </Navigation>
                 <Hamburger
@@ -92,17 +94,14 @@ const Navbar = ({ isLoggedin }) => {
     )
 }
 
-const mapStateToProps = state => ({
-    isLoggedin: state.user,
+const mapStateToProps = ({ user }) => ({
+    isLoggedin: user,
 })
 
 export default connect(mapStateToProps)(Navbar)
 
 Navbar.propTypes = {
-    isLoggedin: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.bool,
-    ]),
+    isLoggedin: PropTypes.any,
 }
 
 Navbar.defaultProps = {

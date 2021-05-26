@@ -188,7 +188,7 @@ const TakeQuiz = ({ questions }) => {
                 />,
             )
         })
-        childrens.push(<Summary />)
+        childrens.push(<Summary key='Summary' />)
         return childrens
     }
 

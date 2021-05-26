@@ -24,6 +24,7 @@ const Search = ({
     setValue,
     shouldRerender,
     setShouldRerender,
+    setCategory,
 }) => {
     const [isOpened, setIsOpened] = useState(false)
 
@@ -34,6 +35,12 @@ const Search = ({
 
         history.push(`/browse/search?query=${value}`)
         setShouldRerender(!shouldRerender)
+    }
+
+    const handleClick = category => {
+        setCategory(category)
+        setIsOpened(false)
+        history.push('/browse/categories')
     }
 
     return (
@@ -59,18 +66,21 @@ const Search = ({
                         <Heading>Pages</Heading>
                     </HRWrapper>
                     <li>
-                        <StyledNavLink exact to='/browse'>
+                        <StyledNavLink
+                            exact
+                            to='/browse'
+                            onClick={() => setIsOpened(false)}
+                        >
                             Most popular
                         </StyledNavLink>
                     </li>
                     <li>
-                        <StyledNavLink exact to='/browse/recent'>
+                        <StyledNavLink
+                            exact
+                            to='/browse/recent'
+                            onClick={() => setIsOpened(false)}
+                        >
                             Recently created
-                        </StyledNavLink>
-                    </li>
-                    <li>
-                        <StyledNavLink exact to='/browse/foryou'>
-                            Choosen for you
                         </StyledNavLink>
                     </li>
                     <HRWrapper>
@@ -78,7 +88,19 @@ const Search = ({
                         <Heading>Categories</Heading>
                     </HRWrapper>
                     {categories.map(item => (
-                        <li key={item}>{item}</li>
+                        <li key={item}>
+                            <button
+                                type='button'
+                                style={{
+                                    cursor: 'pointer',
+                                    width: '100%',
+                                    textAlign: 'left',
+                                }}
+                                onClick={() => handleClick(item)}
+                            >
+                                {item}
+                            </button>
+                        </li>
                     ))}
                 </ul>
             </Dropdown>
@@ -93,6 +115,7 @@ Search.propTypes = {
     setValue: PropTypes.func.isRequired,
     setShouldRerender: PropTypes.func.isRequired,
     shouldRerender: PropTypes.bool.isRequired,
+    setCategory: PropTypes.func.isRequired,
 }
 
 Search.defaultProps = {

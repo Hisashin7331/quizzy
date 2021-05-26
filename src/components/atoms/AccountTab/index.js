@@ -1,23 +1,47 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { config } from 'config'
 import PropTypes from 'prop-types'
-// import { logoutUser } from 'api/user'
+import { logoutUser } from 'api/user'
+import { useHistory } from 'react-router-dom'
 
-// import logout from 'assets/icons/logout.svg'
+import login from 'assets/icons/login.svg'
+import logout from 'assets/icons/logout.svg'
 
-import { Wrapper, Avatar, Username, AccountButton } from './styles'
+import {
+    Wrapper,
+    Avatar,
+    Username,
+    AccountButton,
+    Division,
+    Button,
+} from './styles'
 
 const AccountTab = ({ username, avatar, mobile }) => {
+    const history = useHistory()
+    const dispatch = useDispatch()
+
+    const redirect = () => history.push('/account')
+
     if (username)
         return (
             <Wrapper mobile={mobile}>
-                <Avatar
-                    src={`${config.apiURL}/images?image=${avatar}`}
-                    alt={`${username}'s avatar`}
-                />
-                <Username>{username}</Username>
-                <AccountButton>Account</AccountButton>
+                <Division user>
+                    <Avatar
+                        src={`${config.apiURL}/images?image=${avatar}`}
+                        alt={`${username}'s avatar`}
+                    />
+                    <Username>{username}</Username>
+                    <AccountButton>Account</AccountButton>
+                </Division>
+                <Division>
+                    <Button onClick={redirect}>
+                        <img src={login} alt='logout' />
+                    </Button>
+                    <Button onClick={() => logoutUser(dispatch)}>
+                        <img src={logout} alt='logout' />
+                    </Button>
+                </Division>
             </Wrapper>
         )
     return null

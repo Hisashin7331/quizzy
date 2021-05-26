@@ -1,5 +1,5 @@
 export const categories = [
-    'Youtube',
+    'YouTube',
     'IT',
     'School',
     'Music',

@@ -7,9 +7,8 @@ export const GlobalStyle = createGlobalStyle`
         display: flex;
         justify-content: center;
         background: #e9e9e9;
-        height: 100%;
+        min-height: 100%;
         width: 100%;
-
     }
     body > #root {
         min-width: 100%;

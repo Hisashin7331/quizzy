@@ -59,3 +59,21 @@ export const logoutUser = dispatch => {
         type: LOGOUT,
     })
 }
+
+export const updateUser = data => {
+    api.put(`${config.apiURL}/users/update`, {
+        ...data,
+    }).then(res => {
+        const user = JSON.parse(localStorage.getItem('user'))
+        console.log(res)
+        const newData = {
+            avatar: user.avatar,
+            email: res.data.email,
+            preferences: user.preferences,
+            token: user.token,
+            username: res.data.username,
+        }
+        localStorage.setItem('user', JSON.stringify(newData))
+        window.location.reload()
+    })
+}

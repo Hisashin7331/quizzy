@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 const StyledMenu = styled.div`
     height: 100vh;
@@ -15,4 +16,17 @@ const StyledMenu = styled.div`
     align-items: center;
 `
 
-export { StyledMenu }
+const Link = styled(NavLink)`
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 500;
+    color: #9f9f9f;
+    font-family: 'Roboto', sans-serif;
+    margin: 16px;
+    &.active {
+        color: white;
+        font-weight: 700;
+    }
+`
+
+export { StyledMenu, Link }

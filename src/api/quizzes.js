@@ -49,7 +49,7 @@ export const createQuiz = (quiz, thumbnail, addToast) => {
                 thumbnail: data,
                 ...quiz,
             }).then(response => {
-                createToast(addToast, response)
+                createToast(addToast, response.data)
             })
         },
     )
@@ -76,4 +76,26 @@ export const getByQuery = async (query, skip, limit) => {
         },
     })
     return result
+}
+
+export const getByCategory = async (category, skip, limit) => {
+    const result = await api.get(
+        `${config.apiURL}/quizzes/category`,
+        {
+            params: {
+                category,
+                skip,
+                limit,
+            },
+        },
+    )
+    return result
+}
+
+export const deleteQuiz = async id => {
+    api.delete(`${config.apiURL}/quizzes/delete`, {
+        data: { id },
+    }).then(() => {
+        window.location.reload()
+    })
 }

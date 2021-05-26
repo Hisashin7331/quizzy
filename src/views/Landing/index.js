@@ -4,11 +4,9 @@ import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import Recent from 'views/Landing/pages/Recent'
-import ForYou from 'views/Landing/pages/ForYou'
 import Popular from 'views/Landing/pages/Popular'
-import AccountTab from 'components/atoms/AccountTab'
+import Categories from 'views/Landing/pages/Categories'
 import Search from 'components/atoms/Search'
-import { Categories } from 'views/Landing/pages/Categories'
 
 import Content from 'components/styles/Content'
 import { Column } from 'components/styles/Column'
@@ -17,6 +15,7 @@ import FindQuiz from './pages/FindQuiz'
 const Landing = ({ match }) => {
     const [searchedValue, setSearchedValue] = useState('')
     const [shouldRerender, setShouldRerender] = useState(false)
+    const [category, setCategory] = useState('')
     useEffect(() => {
         seo({
             title: '',
@@ -26,24 +25,20 @@ const Landing = ({ match }) => {
     })
     return (
         <Content>
-            <Column wide>
+            <Column full>
                 <Search
                     onlyFilter
                     value={searchedValue}
                     setValue={setSearchedValue}
                     setShouldRerender={setShouldRerender}
                     shouldRerender={shouldRerender}
+                    setCategory={setCategory}
                 />
                 <Route exact path={match.path} component={Popular} />
                 <Route
                     exact
                     path={`${match.path}/recent`}
                     component={Recent}
-                />
-                <Route
-                    exact
-                    path={`${match.path}/foryou`}
-                    component={ForYou}
                 />
                 <Route
                     exact
@@ -55,11 +50,8 @@ const Landing = ({ match }) => {
                 <Route
                     exact
                     path={`${match.path}/categories`}
-                    component={Categories}
+                    render={() => <Categories category={category} />}
                 />
-            </Column>
-            <Column>
-                <AccountTab />
             </Column>
         </Content>
     )
