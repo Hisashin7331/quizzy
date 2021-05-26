@@ -69,7 +69,7 @@ const Navbar = ({ isLoggedin }) => {
                             </NavigationButton>
                         )
                     })}
-                    {!isLoggedin.something ? (
+                    {!isLoggedin?.something ? (
                         <NavigationButton exact to='/login'>
                             <NavigationButtonIcon src={login} />
                             <NavigationButtonText>
