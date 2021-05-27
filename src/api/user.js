@@ -28,6 +28,8 @@ export const signIn = (
 export const signUp = (formData, avatar, addToast) => {
     api.post(`${config.apiURL}/images/upload`, avatar).then(
         ({ data }) => {
+            if (data.error)
+                createToast(addToast, { error: 'No avatar uploaded' })
             api.post(`${config.apiURL}/users/register`, {
                 avatar: data,
                 ...formData,
@@ -65,7 +67,6 @@ export const updateUser = data => {
         ...data,
     }).then(res => {
         const user = JSON.parse(localStorage.getItem('user'))
-        console.log(res)
         const newData = {
             avatar: user.avatar,
             email: res.data.email,
