@@ -69,7 +69,7 @@ const Navbar = ({ isLoggedin }) => {
                             </NavigationButton>
                         )
                     })}
-                    {!isLoggedin?.something ? (
+                    {!isLoggedin ? (
                         <NavigationButton exact to='/login'>
                             <NavigationButtonIcon src={login} />
                             <NavigationButtonText>
@@ -95,7 +95,7 @@ const Navbar = ({ isLoggedin }) => {
 }
 
 const mapStateToProps = ({ user }) => ({
-    isLoggedin: user.authData,
+    isLoggedin: user?.token,
 })
 
 export default connect(mapStateToProps)(Navbar)
