@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { config } from 'config'
 import emailjs from 'emailjs-com'
 import { useToasts } from 'react-toast-notifications'
 
@@ -22,25 +21,30 @@ const Support = () => {
     const handleSubmit = e => {
         e.preventDefault()
 
-        const { serviceID, templateID, userID } = config
-
-        emailjs.send(serviceID, templateID, form, userID).then(
-            () => {
-                setForm({
-                    email: '',
-                    message: '',
-                })
-                addToast('Message has been sent!', {
-                    appearance: 'success',
-                })
-            },
-            error => {
-                addToast(
-                    `Unexpected error occured :( ${error.text}`,
-                    { appearance: 'error' },
-                )
-            },
-        )
+        emailjs
+            .send(
+                process.env.REACT_APP_SERVICE_ID,
+                process.env.REACT_APP_TEMPLATE_ID,
+                form,
+                process.env.REACT_APP_USER_ID,
+            )
+            .then(
+                () => {
+                    setForm({
+                        email: '',
+                        message: '',
+                    })
+                    addToast('Message has been sent!', {
+                        appearance: 'success',
+                    })
+                },
+                error => {
+                    addToast(
+                        `Unexpected error occured :( ${error.text}`,
+                        { appearance: 'error' },
+                    )
+                },
+            )
     }
 
     return (
