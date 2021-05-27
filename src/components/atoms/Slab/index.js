@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { config } from 'config'
 import { deleteQuiz } from 'api/quizzes'
 
 import del from 'assets/symbolic/delete.svg'
@@ -17,12 +16,7 @@ import {
 const Slab = ({ id, thumbnail, name, views }) => {
     return (
         <Wrapper>
-            <Image
-                src={
-                    thumbnail &&
-                    `${config.apiURL}/images?image=${thumbnail}`
-                }
-            />
+            <Image src={thumbnail && `${thumbnail}`} />
             <Info>
                 <Title>{name}</Title>
                 <Detail>views: {views}</Detail>

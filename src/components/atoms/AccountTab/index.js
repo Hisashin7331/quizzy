@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect, useDispatch } from 'react-redux'
-import { config } from 'config'
 import PropTypes from 'prop-types'
 import { logoutUser } from 'api/user'
 import { useHistory } from 'react-router-dom'
@@ -28,7 +27,7 @@ const AccountTab = ({ username, avatar, mobile }) => {
             <Wrapper mobile={mobile}>
                 <Division user>
                     <Avatar
-                        src={`${config.apiURL}/images?image=${avatar}`}
+                        src={avatar}
                         alt={`${username}'s avatar`}
                     />
                     <Username>{username}</Username>

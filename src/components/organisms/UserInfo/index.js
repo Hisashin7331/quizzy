@@ -1,16 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { config } from 'config'
 
 import { Styled, Avatar, Username, Email } from './styles'
 
 const UserInfo = ({ avatarUrl, username, email }) => {
     return (
         <Styled>
-            <Avatar
-                src={`${config.apiURL}/images?image=${avatarUrl}`}
-                alt={`${username}'s avatar`}
-            />{' '}
+            <Avatar src={avatarUrl} alt={`${username}'s avatar`} />{' '}
             <Username>Hello, {username}</Username>
             <Email>{email}</Email>
         </Styled>

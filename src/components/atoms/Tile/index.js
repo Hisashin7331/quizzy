@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { config } from 'config'
 
 import {
     Styled,
@@ -14,12 +13,7 @@ import {
 const Tile = ({ thumbnail, name, author, views, id }) => {
     return (
         <Styled to={`/quiz/${id}`}>
-            <Image
-                src={
-                    thumbnail &&
-                    `${config.apiURL}/images?image=${thumbnail}`
-                }
-            />
+            <Image src={thumbnail && `${thumbnail}`} />
             <Description>
                 <Title>{name}</Title>
                 <Details>

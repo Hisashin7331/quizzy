@@ -56,9 +56,7 @@ const Quiz = () => {
                     ) : (
                         <>
                             <Column>
-                                <Image
-                                    src={`${config.apiURL}/images?image=${quiz.thumbnail}`}
-                                />
+                                <Image src={quiz.thumbnail} />
                                 <NumbersWrapper>
                                     <Numbers
                                         number={quiz.data.length}
