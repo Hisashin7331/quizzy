@@ -74,9 +74,7 @@ const Quiz = () => {
                             </Column>
                             <Column wide>
                                 <Mobile>
-                                    <Image
-                                        src={`${config.apiURL}/images?image=${quiz.thumbnail}`}
-                                    />
+                                    <Image src={quiz.thumbnail} />
                                 </Mobile>
                                 <Info>
                                     <span>
